@@ -1,2 +1,2 @@
 # theNunGram
-###Social Networking app
+Social Networking app
