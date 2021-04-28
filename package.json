@@ -4,6 +4,7 @@
   "description": "social network",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "dev": "nodemon server.js"
   },
   "author": "F2T9",
