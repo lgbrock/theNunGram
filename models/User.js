@@ -12,9 +12,6 @@ const UserSchema = new mongoose.Schema({
   bio: {
     type: String,
   },
-  id: {
-    type: number
-  }
 })
 
 

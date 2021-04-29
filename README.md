@@ -1,7 +1,6 @@
 # theNunGram
-Social Networking app
 
-<h1>The NunGram(Working Title)<h1>
+Social Networking app
 
 A Leon Centric social media network. Users can post, upvote/downvote, see their feed of of their favorite leon moments!
 
@@ -51,5 +50,44 @@ ToDO:
             i. How is our project directory setup?
             ii. Are keeping in line with the paradigm set by MVC?
     []Client-Side
-README.md
-2 KBx
+
+
+    Notes
+
+What packages might we need for social media app?
+Express
+Mongo
+Mongoose  
+ ejs
+nodemon
+dotenv
+CSS package
+Passport
+
+Wireframe
+What do we want to do?
+Everything Leon
+Handle images, video, and captures from Twitch
+Bridget - image resizing for faster processing
+Keep videos down to 15 seconds
+Up votes and down votes for post
+Use happy face - Bob - Leon emote
+Use sad face - John - Leon emote
+Instead of hearting/favoriting a photo, you get a Nun emote
+Pull Leon’s twitter feed
+“Its not stalking, it’s networking"
+Color scheme
+blue
+Brown/green
+Little splash of white
+Log-in
+Sign-up
+Simple feed
+Home - Leons Twitter
+Post - Own post
+Random post - math.random
+Mongoose Schema
+Name
+Email
+Profile Pic
+Quick bio
