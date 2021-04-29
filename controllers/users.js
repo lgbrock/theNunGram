@@ -2,7 +2,8 @@ const User = require('../models/User');
 
 module.exports = {
   getUsers: async (req, res) => {
-    res.render('users.ejs', { user: req.body.user });
+    const people = await User.find();
+    console.log(people);
   },
   userForm: async (req, res) => {
     res.render('addUser.ejs');
