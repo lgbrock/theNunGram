@@ -1,10 +1,12 @@
 //Requiring our dependencies
 const express = require('express');
 const mongoose = require('mongoose');
+const passport = require('passport');
 const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const connectDb = require('./config/database');
+const session = require('express-session')
 const homeRoutes = require('./routes/home');
 const usersRoutes = require('./routes/users');
 
@@ -13,6 +15,9 @@ const app = express();
 
 //Load config
 dotenv.config();
+
+// Load passport config
+require('./config/passport')(passport)
 
 // connect to database
 connectDb();
@@ -27,11 +32,22 @@ app.use(morgan('dev')); //logging middleware. Check console for logs
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// // require('dotenv').config({path: './config/.env'})
+//initialize express sessions - used to persist connection to db
+// TODO: add mongo-connect V3
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+}))
+
+// initialize passport sessions - persists auth until user logs out
+app.use(passport.initialize());
+app.use(passport.session());
 
 // // Routes
 app.use('/', homeRoutes);
 app.use('/users', usersRoutes);
+app.use('/auth', require('./routes/auth')) // TODO: define variable up top
 
 //Initializing our PORT
 let PORT = process.env.PORT;
