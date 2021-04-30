@@ -3,8 +3,13 @@ const User = require('../models/User');
 module.exports = {
   getUsers: async (req, res) => {
     const people = await User.find();
+    res.render('users.ejs', {people: people })
     console.log(people);
   },
+  // getUser: async (req, res) => {
+  //   const user = await User.findById(req.params.id);
+  //   console.log(user);
+  // },
   userForm: async (req, res) => {
     res.render('addUser.ejs');
   },
@@ -23,5 +28,8 @@ module.exports = {
     } catch (err) {
       console.log(err);
     }
+  },
+  profile: (req, res) => {
+    res.render('profile.ejs');
   },
 };
