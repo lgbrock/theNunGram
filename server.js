@@ -8,6 +8,7 @@ const connectDb = require('./config/database');
 const homeRoutes = require('./routes/home');
 const usersRoutes = require('./routes/users');
 
+
 // initialize express
 const app = express();
 
@@ -21,7 +22,7 @@ connectDb();
 app.set('view engine', 'ejs'); // sets the view engine to render our ejs
 app.use(express.static('public')); // tells express to serve up these 'static' files
 app.use(cors()); //allows for cross origin resource sharing(Not used for this project but very important so make it a habit)
-app.use(morgan('dev')); //logging middleware. Check console for logs
+app.use(morgan('tiny')); //logging middleware. Check console for logs
 
 //body-parsing middleware (required to parse incoming JSON)
 app.use(express.json());
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 // // Routes
 app.use('/', homeRoutes);
 app.use('/users', usersRoutes);
+
 
 //Initializing our PORT
 let PORT = process.env.PORT;
