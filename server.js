@@ -7,6 +7,7 @@ const dotenv = require("dotenv");
 const connectDb = require("./config/database");
 const homeRoutes = require("./routes/home");
 const usersRoutes = require("./routes/users");
+const postsRoutes = require("./routes/posts")
 
 // initialize express
 const app = express();
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 // // Routes
 app.use("/", homeRoutes);
 app.use("/users", usersRoutes);
+app.use("/posts", postsRoutes);
 
 //Initializing our PORT
 let PORT = process.env.PORT;
