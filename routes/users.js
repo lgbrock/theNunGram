@@ -10,10 +10,7 @@ router.get('/', usersController.getUsers);
 //router.get('/:id', usersController.getUser);
 
 //GETS users/profile
-router.get('/profile', usersController.profile); //don't need add users/bc express already knows
+// router.get('/profile', usersController.profile); //don't need add users/bc express already knows
 
-//Handles GET AND POST requests to our /users/addUser
-router.get('/addUser', usersController.userForm);
-router.post('/addUser', usersController.addUser);
 
 module.exports = router;
