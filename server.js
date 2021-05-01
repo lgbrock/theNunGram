@@ -13,8 +13,8 @@ const usersRoutes = require('./routes/users');
 // initialize express
 const app = express();
 
-//Load config
-dotenv.config();
+//Load config setting the .env path to /config/.env
+dotenv.config({ path: "./config/.env" });
 
 // Load passport config
 require('./config/passport')(passport)

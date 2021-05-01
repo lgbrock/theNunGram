@@ -2,6 +2,11 @@
 
 Social Networking app
 
+# Getting Started
+- Create .env file inside config
+- Place MongoDB connection string value in .env with DB_URI as key name
+    - e.g. DB_URI = CONNECTION_STRING 
+
 A Leon Centric social media network. Users can post, upvote/downvote, see their feed of of their favorite leon moments!
 
 ToDO:

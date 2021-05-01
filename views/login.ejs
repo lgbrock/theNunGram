@@ -5,23 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <form action="/users/addUser" method="POST">
-      <div>
+    <h1>Please login</h1>
+    <form>
+      <div class="form-option">
         <label for="name">Name</label>
-        <input type="text" name="name" />
+        <input type="text" placeholder="name" name="name" />
       </div>
-      <div>
+      <div class="form-option">
         <label for="email">Email</label>
-        <input type="text" name="email" />
+        <input type="text" placeholder="email" name="email" />
       </div>
-      <div>
-        <label for="bio">Bio</label>
-        <input type="text" name="bio" />
-      </div>
-      <button type="submit">Submit</button>
+      <button type="submit">Login</button>
     </form>
   </body>
 </html>

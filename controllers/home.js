@@ -4,4 +4,10 @@ module.exports = {
     // res.json('This is the home page');
     res.render('index.ejs');
   },
+  login: (req, res) => {
+    res.render('login.ejs');
+  },
+  signUp: (req, res) => {
+    res.render('signUp.ejs');
+  },
 };
