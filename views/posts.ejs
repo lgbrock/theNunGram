@@ -9,15 +9,15 @@
   </head>
   <body>
     <h1>POST MEMES!</h1>
-    <% posts.forEach((a, b) => { %>
-    <span class="post">
+    <% for (post of posts) { %>
+    <div class="post">
       <div class="caption">
-        <span>Caption: <%= a.caption%></span>
+        <span>Caption: <%= post.caption%></span>
       </div>
       <div class="content">
-        <p>Content: <%= a.content%></p>
+        <p>Content: <%= post.content%></p>
       </div>
-    </span>
-    <% }) %>
+    </div>
+    <% } %>
   </body>
 </html>
