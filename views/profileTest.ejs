@@ -8,10 +8,8 @@
     <title>Document</title>
   </head>
   <body>
-    <% { %>
-    <h1>This is <%= user.firstName%> profile</h1>
-    <h2>This is my bio: <%= user.bio%></h2>
+    <h1>This is <%= user.firstName%>'s profile</h1>
+    <h2>This was created at: <%= user.createdAt%></h2>
     <img src="<%= user.image%>" />
-    <% } %>
   </body>
 </html>

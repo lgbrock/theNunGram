@@ -1,34 +1,35 @@
 //Requiring our dependencies
-const express = require('express');
-const mongoose = require('mongoose');
-const passport = require('passport');
-const cors = require('cors');
-const morgan = require('morgan');
-const dotenv = require('dotenv');
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
-const connectDb = require('./config/database');
-const homeRoutes = require('./routes/home');
-const usersRoutes = require('./routes/users');
-const authRoutes = require('./routes/auth');
+const express = require("express");
+const mongoose = require("mongoose");
+const passport = require("passport");
+const cors = require("cors");
+const morgan = require("morgan");
+const dotenv = require("dotenv");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+const connectDb = require("./config/database");
+const homeRoutes = require("./routes/home");
+const usersRoutes = require("./routes/users");
+const authRoutes = require("./routes/auth");
+const postsRoutes = require("./routes/posts");
 
 // initialize express
 const app = express();
 
 //Load config setting the .env path to /config/.env
-dotenv.config({ path: './config/.env' });
+dotenv.config({ path: "./config/.env" });
 
 // Load passport config
-require('./config/passport')(passport);
+require("./config/passport")(passport);
 
 // connect to database
 connectDb();
 
 //Calling our packages
-app.set('view engine', 'ejs'); // sets the view engine to render our ejs
-app.use(express.static('public')); // tells express to serve up these 'static' files
+app.set("view engine", "ejs"); // sets the view engine to render our ejs
+app.use(express.static("public")); // tells express to serve up these 'static' files
 app.use(cors()); //allows for cross origin resource sharing(Not used for this project but very important so make it a habit)
-app.use(morgan('dev')); //logging middleware. Check console for logs
+app.use(morgan("dev")); //logging middleware. Check console for logs
 
 //body-parsing middleware (required to parse incoming JSON)
 app.use(express.json());
@@ -38,7 +39,7 @@ app.use(express.urlencoded({ extended: true }));
 // TODO: add mongo-connect V3
 app.use(
   session({
-    secret: 'keyboard cat',
+    secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -50,9 +51,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // // Routes
-app.use('/', homeRoutes);
-app.use('/users', usersRoutes);
-app.use('/auth', authRoutes);
+app.use("/", homeRoutes);
+app.use("/users", usersRoutes);
+app.use("/posts", postsRoutes);
+app.use("/auth", authRoutes);
 
 //Initializing our PORT
 let PORT = process.env.PORT;
