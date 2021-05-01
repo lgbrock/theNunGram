@@ -7,10 +7,11 @@ const homeController = require('../controllers/home');
 
 //Get Request to the '/' route will be handed off to the homeController's getHome method
 router.get('/', homeController.getHome);
+router.get('/profile', homeController.getProfile);
 
 //These Routes arent needed, they were to test our server. 
-router.get('/login', homeController.login);
-router.get('/signup', homeController.signUp);
+// router.get('/login', homeController.login);
+// router.get('/signup', homeController.signUp);
 
 //exporting our router
 module.exports = router;

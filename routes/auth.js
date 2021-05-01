@@ -8,10 +8,11 @@ router.get('/google', passport.authenticate('google', {scope: ['profile']}))
 
 //@desc Google callback
 //@req GET /auth/google/callback
-router.get('/google/callback', passport.authenticate('google', {failureRedirect: '/'},
-    (req,res) => {
-        res.redirect('/profile')
-}))
+router.get('/google/callback', passport.authenticate('google', {failureRedirect: '/'}),
+  (req,res) => {
+    res.redirect('/profile')
+  }
+)
 
 //@desc Logout User
 //@req GET /logout
