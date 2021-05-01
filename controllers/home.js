@@ -1,16 +1,15 @@
-const User = require('../models/User');
+const User = require("../models/User");
 
 module.exports = {
   //The getHome method receives a promise, handles said promise and responds with some JSON
   getHome: (req, res) => {
-    res.render('index.ejs');
+    res.render("index.ejs");
   },
   getProfile: async (req, res) => {
     try {
-      //console.log(req.body);
-      const profile = await User.find({ googleId: req.body.id });
+      const profile = await User.find({ googleId: req.user.googleId });
       console.log(profile);
-      res.render('profileTest.ejs', { user: profile });
+      res.render("profile.ejs", { user: profile[0] });
     } catch (err) {
       console.log(err);
     }

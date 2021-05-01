@@ -3,8 +3,9 @@ const Post = require("../models/Post");
 module.exports = {
   getPosts: async (req, res) => {
     try {
+      // const posts = await Post.find({ user: req.user.id });
       const posts = await Post.find();
-      console.log(posts);
+      console.log(`posts: ${posts}`);
       res.render("posts.ejs", { posts });
     } catch (err) {
       console.log(err);
@@ -19,10 +20,11 @@ module.exports = {
   createPost: async (req, res) => {
     try {
       const post = await req.body;
-      console.log(post);
+      console.log(req.user);
       await Post.create({
         caption: post.caption,
         content: post.content,
+        user: req.user.id,
       });
       console.log(`Post has been added!`);
       res.redirect("/posts");
@@ -30,4 +32,5 @@ module.exports = {
       console.log(err);
     }
   },
+  getUserPosts: async (req, res) => {},
 };
