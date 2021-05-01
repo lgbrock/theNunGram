@@ -1,9 +1,9 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const mongoose = require('mongoose')
-const User = require('./models/User')
+const User = require('../models/User')
 
 // TODO: Set up google cloud console so below code will work 
-module.exports = function (passport) {
+module.exports = (passport) => {
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_ID,
         clientSecret: process.env.GOOGLE_SECRET,
