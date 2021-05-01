@@ -5,19 +5,21 @@ const passport = require('passport');
 const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const connectDb = require('./config/database');
-const session = require('express-session')
 const homeRoutes = require('./routes/home');
 const usersRoutes = require('./routes/users');
+const authRoutes = require('./routes/auth');
 
 // initialize express
 const app = express();
 
 //Load config setting the .env path to /config/.env
-dotenv.config({ path: "./config/.env" });
+dotenv.config({ path: './config/.env' });
 
 // Load passport config
-require('./config/passport')(passport)
+require('./config/passport')(passport);
 
 // connect to database
 connectDb();
@@ -34,11 +36,14 @@ app.use(express.urlencoded({ extended: true }));
 
 //initialize express sessions - used to persist connection to db
 // TODO: add mongo-connect V3
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false,
-}))
+app.use(
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  })
+);
 
 // initialize passport sessions - persists auth until user logs out
 app.use(passport.initialize());
@@ -47,7 +52,7 @@ app.use(passport.session());
 // // Routes
 app.use('/', homeRoutes);
 app.use('/users', usersRoutes);
-app.use('/auth', require('./routes/auth')) // TODO: define variable up top
+app.use('/auth', authRoutes);
 
 //Initializing our PORT
 let PORT = process.env.PORT;
