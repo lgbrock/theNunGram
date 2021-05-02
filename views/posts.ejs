@@ -15,13 +15,10 @@
         <span>Caption: <%= post.caption%></span>
       </div>
       <div class="content">
-        <p>Content: <%= post.content%></p>
+        <img src='<%= post.content%>'/>
       </div>
       <div class="author">
-        <p>User: <%= post.user %></p>
-      </div>
-      <div class="author">
-        <p>pic: <%= post.image %></p>
+        <p>Author: <%= post.author %></p>
       </div>
     </div>
     <% } %>
