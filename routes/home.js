@@ -7,12 +7,11 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth');
 const homeController = require('../controllers/home');
 
 //Get Request to the '/' route will be handed off to the homeController's getHome method
-router.get('/', homeController.getHome);
+router.get('/', ensureGuest, homeController.getHome);
+//Gets profile Page. Successful Auth Login will redirect to this GET request
 router.get('/profile', ensureAuth, homeController.getProfile);
-
-//These Routes arent needed, they were to test our server.
-// router.get('/login', homeController.login);
-// router.get('/signup', homeController.signUp);
+//Gets the Feed
+router.get('/feed', ensureAuth, homeController.getFeed);
 
 //exporting our router
 module.exports = router;

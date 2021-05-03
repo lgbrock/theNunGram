@@ -24,11 +24,16 @@
                     </section>
                 </section>
         </section>
+        <h1>This is <%= user.firstName %>'s profile</h1>
+        <h2>This was created at: <%= user.createdAt %></h2>
+        <img src="<%= user.image %>" />
         <section class="column">
             <section class="right">
                 <ul class="nav">
                     <li>Home</li>
-                    <li>Logout</li>
+                    <li><a href='/posts/addPost'>Create Post</a></li>
+                    <li><a href='/posts/randomPost'>Random Post</a></li>
+                    <li><a href='/auth/logout'>Logout</a></li>
                 </ul>
             </section>
         </section>

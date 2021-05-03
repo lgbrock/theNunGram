@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Post</title>
+    <link rel="stylesheet" href="/css/addPost/style.css" />
+  </head>
+  <body>
+    <% { %>
+
+    <div class='header'>
+      <h2>This is <%= user.firstName%>'s profile</h2>
+        <p>This is my bio:<%= user.bio%></p>
+        <span>Profile Pic</span> <img src='<%= user.image%>'>
+    </div>
+
+    <div class="posts">
+        <p>Here are my posts</p>
+        <ul class="row list-unstyled">
+            <% for(let i=0; i<post.length; i++) {%>
+                <p> <%= post[i].caption %> </p>
+                <a href="/post/<%= post[i]._id%>">
+                  <img class="img-fluid" src="<%= post[i].image%>">
+                </a>
+            <% } %> 
+    </div>  
+    <% } %>   
+    <h3>ADD A POST (all fields must be filled)</h3>
+    <form action="/post/addPost" enctype="multipart/form-data" method="POST">
+      <div>
+        <label for="caption">Give us a Caption</label>
+        <input type="text" name="caption" />
+      </div>
+      <div>
+        <label for="content">Got a Pic?</label>
+        <span> Only supports: .jpg, .png, jpeg,</span>
+        <input class="content" type="file" name="file" />
+      </div>
+      <div>
+        <label for="clip">Got a Twitch Clip? Paste it here</label>
+        <input type="text" name="clip"/>
+      </div>
+      <button type="submit">Upload...BOOM!</button>
+    </form>
+    <section class="column">
+        <section class="right">
+            <ul class="nav">
+                <li>Home</li>
+                <li><a href='/feed'>Feed</a></li>
+                <li><a href='/post/randomPost'>Random Post</a></li>
+                <li><a href='/auth/logout'>Logout</a></li>
+            </ul>
+        </section>
+    </section>
+  </body>
+</html>

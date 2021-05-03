@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/posts/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Parsing out all the Posts in the DB from ALL users -->
+    <h1>This is your Feed!</h1>
+    <% for (post of posts) { %>
+    <div class="post">
+      <div class="caption">
+        <span>Caption: </span>
+        <h1><%= post.caption%></h1>
+      </div>
+      <div class="content">
+        <a href="/post/<%= post._id%>">
+          <img src="<%= post.image %>" />
+        </a>
+      </div>
+      <div></div>
+      <div class="clip">
+        <iframe
+          src="<%= post.clip %>"
+          height="400"
+          width="300"
+          allowfullscreen="true"
+        ></iframe>
+      </div>
+      <div class="author">
+        <p>Author: <%= post.author %></p>
+      </div>
+    </div>
+    <div class="date">
+      <p>Created At: <%= post.createdAt %></p>
+    </div>
+    <% } %>
+    <section class="column">
+      <section class="right">
+        <ul class="nav">
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/feed">Feed</a></li>
+          <li><a href="/auth/logout">Logout</a></li>
+        </ul>
+      </section>
+    </section>
+  </body>
+</html>

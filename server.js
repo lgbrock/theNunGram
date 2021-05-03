@@ -9,8 +9,8 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const connectDb = require('./config/database');
 const homeRoutes = require('./routes/home');
-const usersRoutes = require('./routes/users');
 const authRoutes = require('./routes/auth');
+const postsRoute = require('./routes/posts');
 
 // initialize express
 const app = express();
@@ -35,7 +35,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //initialize express sessions - used to persist connection to db
-// TODO: add mongo-connect V3
 app.use(
   session({
     secret: 'keyboard cat',
@@ -51,8 +50,8 @@ app.use(passport.session());
 
 // // Routes
 app.use('/', homeRoutes);
-app.use('/users', usersRoutes);
 app.use('/auth', authRoutes);
+app.use('/post', postsRoute);
 
 //Initializing our PORT
 let PORT = process.env.PORT;
