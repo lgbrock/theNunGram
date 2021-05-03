@@ -35,7 +35,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //initialize express sessions - used to persist connection to db
-// TODO: add mongo-connect V3
 app.use(
   session({
     secret: 'keyboard cat',
