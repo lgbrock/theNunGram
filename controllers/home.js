@@ -1,23 +1,31 @@
-const User = require("../models/User");
+const User = require('../models/User');
+const Post = require('../models/Post');
 
 module.exports = {
-  //The getHome method receives a promise, handles said promise and responds with some JSON
   getHome: (req, res) => {
-    res.render("index.ejs");
+    res.render('index.ejs');
   },
   getProfile: async (req, res) => {
     try {
-      const profile = await User.find({ googleId: req.user.googleId });
-      console.log(profile);
-      res.render("profile.ejs", { user: profile[0] });
+      //finds all the posts where the user field in the DB matches our incoming req.user.id
+      //req.user is coming in from google and its successful login
+      const posts = await Post.find({ user: req.user.id });
+      //render our profile page and pass in our templating reference
+      res.render('profile2.ejs', { user: req.user, post: posts });
     } catch (err) {
       console.log(err);
     }
   },
-  // login: (req, res) => {
-  //   res.render('login.ejs');
-  // },
-  // signUp: (req, res) => {
-  //   res.render('signUp.ejs');
-  // },
+  getFeed: async (req, res) => {
+    try {
+      //finds all posts
+      const posts = await Post.find();
+      console.log(posts);
+      //renders feed page, and pass in our templating reference
+      res.render('feed.ejs', { posts });
+      console.log('feed got! Hope youre hungry');
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
