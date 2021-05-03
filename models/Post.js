@@ -4,13 +4,14 @@ const PostSchema = new mongoose.Schema({
   caption: {
     type: String,
   },
-  content: {
+  image: {
     type: String,
-    required: true,
+  },
+  clip: {
+    type: String,
   },
   cloudinaryId: {
     type: String,
-    required: true,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,

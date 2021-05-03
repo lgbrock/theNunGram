@@ -4,9 +4,12 @@ const upload = require('../middleware/multer');
 const { ensureAuth } = require('../middleware/auth');
 const postsController = require('../controllers/posts.js');
 
-router.get('/', ensureAuth, postsController.getPosts);
-router.get('/randomPage', postsController.randomPage);
-router.get('/addPost', postsController.addPost);
+//Get get a post By it's ID
+router.get('/:id', ensureAuth, postsController.getPost);
+
+// Creates a new Post. Listens to a POST request from the profile.ejs Form
 router.post('/addPost', upload.single('file'), postsController.createPost);
+
+// router.get('/randomPage', postsController.randomPage);
 
 module.exports = router;
