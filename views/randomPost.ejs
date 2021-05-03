@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/posts/style.css" />
+    <title>Random Post</title>
+  </head>
+  <body>
+    <!-- Renders a single Post -->
+    <h1>This is a Random Post Page</h1>
+    <% { %>
+    <div class="post">
+      <h3>Caption: <%= post.caption%></h3>
+        <div>
+          <img src='<%= post.image%>'/>
+        </div>
+        <p>Author: <%= post.author%> </p>
+
+        <section class="column">
+          <section class="right">
+              <ul class="nav">
+                  <li><a href='/feed'>Feed</a></li>
+                  <li><a href='/profile'>Profile</a></li>
+                  <li><a href="/auth/logout">Logout</a></li>
+              </ul>
+          </section>
+      </section>
+        <!-- Iframe is causing page to break so nothing will show below it. Twitch allows you to directly src twitch clips SEE README -->
+        <iframe src='<%= post.clip%>'/>
+    </div>
+    <% } %>
+  </body>
+</html>

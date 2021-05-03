@@ -10,6 +10,8 @@ router.get('/:id', ensureAuth, postsController.getPost);
 // Creates a new Post. Listens to a POST request from the profile.ejs Form
 router.post('/addPost', upload.single('file'), postsController.createPost);
 
+// 
+
 // router.get('/randomPage', postsController.randomPage);
 
 module.exports = router;

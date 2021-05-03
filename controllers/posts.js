@@ -28,7 +28,7 @@ module.exports = {
         clip: post.clip,
         cloudinaryId: result.public_id,
         user: req.user.id,
-        author: req.user.displayName,
+        author: req.user.displayName
       });
       console.log('Post has been added');
       res.redirect('/profile');
