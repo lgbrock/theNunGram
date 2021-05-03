@@ -68,7 +68,9 @@ We have an issue that needs fixing when it come to hosting videos on our site. W
 
       https://cloudinary.com/documentation
 
-      2) We fix the current way we doing that now. I will link the twitch dev documentation but i wasnt able to get it work. I have also left documentation in the code to give you a general idea of what each part is doing.
+      2) We fix the current way we doing that now. I will link the twitch dev documentation but i wasnt able to get it work.
+
+      https://dev.twitch.tv/docs/embed/video-and-clips/
 
       If we try going this way, we need a way to fix the storing of the POST schema in the DB. With the way its set up now, a post.body has to go through several middleware(multer, cloudinary) before being created. Problem is, what if the user gives a clip(pastes a URL in) but provides no image. This throws us back an error on POST creation. Look at the Post.create method below:
 
