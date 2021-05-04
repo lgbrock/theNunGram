@@ -1,5 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
+// custom middleware for handling embedding of twitch clips
+const { videoOrigin, repeatURLParams, convertTwitchClip } = require('../middleware/customFunctions')
 
 module.exports = {
   getPost: async (req, res) => {
@@ -33,7 +35,7 @@ module.exports = {
       await Post.create({
         caption: post.caption,
         image: result.secure_url,
-        clip: post.clip,
+        clip: convertTwitchClip(post.clip, 'thenungram.herokuapp.com', 'www.thenungram.herokuapp.com'),
         cloudinaryId: result.public_id,
         user: req.user.id,
         author: req.user.displayName,

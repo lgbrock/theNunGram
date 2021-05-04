@@ -37,5 +37,8 @@
   "bugs": {
     "url": "https://github.com/yobee333/theNunGram/issues"
   },
-  "homepage": "https://github.com/yobee333/theNunGram#readme"
+  "homepage": "https://github.com/yobee333/theNunGram#readme",
+  "engines": {
+    "node": "^14.x"
+  }
 }
