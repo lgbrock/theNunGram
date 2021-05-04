@@ -39,6 +39,6 @@
   },
   "homepage": "https://github.com/yobee333/theNunGram#readme",
   "engines": {
-    "node": "^14.15.x"
+    "node": "^14.x"
   }
 }
