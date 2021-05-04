@@ -1,3 +1,97 @@
-.content {
-  size: 200px;
+
+body {
+    background-color: rgb(168, 235, 235);
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+
+.header{
+  padding: 10px;
+}
+
+.profile-pic{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 10px;
+}
+
+
+img{
+  width: 7rem;
+  border-radius: 10px;
+  box-shadow:0 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 10px;
+  
+}
+
+h2{
+  font-size: 2rem;
+}
+.content, input{
+  padding:10px;
+  margin:10px 0;
+}
+input[type=text] {
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+  box-shadow:0 2px 4px rgba(0, 0, 0, 0.3);
+  width: 100%;
+}
+
+button{
+  width: 300px;
+  height: 50px;
+  background: green;
+  color: white;
+  text-decoration: none;
+  padding: 1%;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  font-size: 2rem;
+  box-shadow:0 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}  
+
+/*probably have to change this to work with the feed posts as well*/
+.posts{
+  height: 300px;
+  width: 50%;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+
+.nav{
+  border-radius: 10px;
+  background: white;
+  box-shadow:0 2px 4px rgba(0, 0, 0, 0.3);
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+  text-decoration: none;
+  
+}
+
+li, a{
+  text-decoration: none;
+  width: 200px;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+}
+
+li:hover{
+  outline: 2px solid blue;
 }
