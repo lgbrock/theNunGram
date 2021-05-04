@@ -57,8 +57,8 @@ app.use('/post', postsRoute);
 app.use('/quotes', quotesRoutes);
 
 //Initializing our PORT
-let PORT = process.env.PORT;
+let PORT = process.env.PORT || 3000;
 
-app.listen(PORT || 3000, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.... you better go catch it`);
 });
