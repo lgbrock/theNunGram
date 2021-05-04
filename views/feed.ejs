@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="css/feed/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">                                      <!-- Bootstrap style -->
+    <link rel="stylesheet" href="css/magnific-popup.css">                                <!-- Magnific pop up style, http://dimsemenov.com/plugins/magnific-popup/ -->
+    <link rel="stylesheet" href="css/templatemo-style.css">   
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +16,44 @@
     <!-- Parsing out all the Posts in the DB from ALL users -->
     <h1>This is your Feed!</h1>
     <% for (post of posts) { %>
-    <div class="post">
+    
+      <div class="container">
+        <div class="row">
+            <div class="tm-left-right-container">
+                <!-- Left column: logo and menu -->
+                <div class="tm-blue-bg tm-left-column">                        
+                    <div class="tm-logo-div text-xs-center">
+                        <img src="img/tm-neaty-logo.png" alt="Logo">
+                        <h1 class="tm-site-name">Neaty</h1>
+                    </div>
+                    <nav class="tm-main-nav">
+                        <ul class="tm-main-nav-ul">
+                            <li class="tm-nav-item">
+                                <a href="#welcome" class="tm-nav-item-link">Home</a>
+                            </li>
+                            <li class="tm-nav-item">
+                                <a href="#about" class="tm-nav-item-link">Submit Post</a>
+                            </li>
+                            <li class="tm-nav-item">
+                                <a href="#galleryone" class="tm-nav-item-link">Submit Quote</a>
+                            </li>
+                            <li class="tm-nav-item">
+                                <a href="#secondgallery" class="tm-nav-item-link">Random Post</a>
+                            </li>
+                            <li class="tm-nav-item">
+                                <a href="#thirdgallery" class="tm-nav-item-link">Logged in As:</a>
+                            </li>
+                            <li class="tm-nav-item">
+                                <a href="#contact" class="tm-nav-item-link">Learn to Code</a>
+                            </li>
+                        </ul>
+                    </nav>                                         
+                </div> <!-- Left column: logo and menu -->
+    
+    
+    
+    <div class="tm-content-div">
+      <div class="post">
       <div class="caption">
         <span>Caption: </span>
         <h1><%= post.caption%></h1>
@@ -47,5 +89,6 @@
         </ul>
       </section>
     </section>
+  </div>
   </body>
 </html>
