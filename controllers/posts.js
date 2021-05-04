@@ -35,7 +35,7 @@ module.exports = {
       await Post.create({
         caption: post.caption,
         image: result.secure_url,
-        clip: convertTwitchClip(post.clip, 'thenungram.herokuapp.com', 'www.thenungram.herokuapp.com'),
+        clip: convertTwitchClip(post.clip, 'www.thenungram.herokuapp.com', 'thenungram.herokuapp.com'),
         cloudinaryId: result.public_id,
         user: req.user.id,
         author: req.user.displayName,
