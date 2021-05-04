@@ -11,6 +11,8 @@ const connectDb = require('./config/database');
 const homeRoutes = require('./routes/home');
 const authRoutes = require('./routes/auth');
 const postsRoute = require('./routes/posts');
+const quotesRoutes = require('./routes/quotes');
+
 
 // initialize express
 const app = express();
@@ -52,6 +54,7 @@ app.use(passport.session());
 app.use('/', homeRoutes);
 app.use('/auth', authRoutes);
 app.use('/post', postsRoute);
+app.use('/quotes', quotesRoutes);
 
 //Initializing our PORT
 let PORT = process.env.PORT;

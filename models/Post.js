@@ -24,9 +24,6 @@ const PostSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  randomPost: {
-    type: String,
-  },
 });
 
 module.exports = mongoose.model("Post", PostSchema);
