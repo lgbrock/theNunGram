@@ -1,8 +1,10 @@
-
+// where does a video come from? E.g. Twitch
 function videoOrigin (videoURL){
     let origin = new URL(videoURL).hostname
     return origin;
 }
+
+// lets you repeat the same param with different values. urlParam is "?parent=" for example. arr of strings as values. E.g. query?parent=value
 function repeatURLParams (urlParam, arr){
   let output = '';
   for (let str of arr){
@@ -11,6 +13,7 @@ function repeatURLParams (urlParam, arr){
   return output;
 }
 
+// Pass in a video URL, followed by the parent domains where that video will be embedded
 function convertTwitchClip (...arguments) {
   let [videoURL, ...parents] = arguments
   let parentSiteParams = repeatURLParams('&parent=',parents)
