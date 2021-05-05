@@ -10,15 +10,21 @@ function repeatURLParams (urlParam, arr){
   }
   return output;
 }
+
 function convertTwitchClip (...arguments) {
   let [videoURL, ...parents] = arguments
   let parentSiteParams = repeatURLParams('&parent=',parents)
-  console.log(parentSiteParams)
+  // console.log(parentSiteParams)
   const url = new URL(videoURL)
   let embeddableURL;
   if (url.hostname === 'clips.twitch.tv'){
     // if it's an embed link in the following format: https://clips.twitch.tv/embed?clip=CleverDependablePoultryLitFam-_dTbDHINZ38jB7eg&parent=localhost:3000
+     // check if url.searchParams.get("clip") is null
+    if (url.searchParams.get("clip") !== null) {
     embeddableURL = `${url.origin + url.pathname + '?clip=' + url.searchParams.get("clip") + parentSiteParams}`
+    } else {
+      embeddableURL = `${url.origin + '/embed?clip=' + url.pathname.slice(1) + parentSiteParams}`
+    }
     // embeddableURL must have an SSL certificate for twitch embeds
     return embeddableURL;
   } else if (url.hostname === 'www.twitch.tv'){
