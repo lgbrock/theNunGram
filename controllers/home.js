@@ -22,13 +22,8 @@ module.exports = {
       const posts = await Post.find();
       console.log(req.user);
       //renders feed page, and pass in our templating reference
-<<<<<<< HEAD
-      res.render("feed.ejs", { posts, user: req.user });
+      res.render("feed.ejs", { posts });
       console.log("feed got! Hope youre hungry");
-=======
-      res.render('feed.ejs', { posts });
-      console.log('feed got! Hope youre hungry');
->>>>>>> upstream/main
     } catch (err) {
       console.log(err);
     }

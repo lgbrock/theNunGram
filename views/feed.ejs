@@ -113,7 +113,16 @@
         </div>
         <div class="content">
           <a href="/post/<%= post._id%>">
-            <img src="<%= post.image %>" />
+            <% if(post.clip != '') {%>
+              <div>
+                  <iframe src='<%= post.clip %>'>
+                  </div>
+                    <% } else { %>
+                      <div>
+                    <img src='<%= post.image%>'/>
+                  </div>
+                    <% } %>
+              </div>
           </a>
         </div>
         <div></div>

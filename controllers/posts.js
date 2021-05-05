@@ -33,22 +33,23 @@ module.exports = {
   },
   createPost: async (req, res) => {
     try {
-      const result = await cloudinary.uploader.upload(req.file.path);
+      // console.log(req.file.path);
+      const result = !req.file
+        ? { image: null, cloudinaryId: null }
+        : await cloudinary.uploader.upload(req.file.path);
 
       const post = await req.body;
-
+      const clip = !post.clip
+        ? ""
+        : convertTwitchClip(
+            post.clip,
+            "herokuapp.com",
+            "thenungram.herokuapp.com"
+          );
       await Post.create({
         caption: post.caption,
         image: result.secure_url,
-<<<<<<< HEAD
-        clip: convertTwitchClip(
-          post.clip,
-          "thenungram.herokuapp.com",
-          "www.thenungram.herokuapp.com"
-        ),
-=======
-        clip: convertTwitchClip(post.clip, 'herokuapp.com', 'thenungram.herokuapp.com'),
->>>>>>> upstream/main
+        clip,
         cloudinaryId: result.public_id,
         user: req.user.id,
         author: req.user.displayName,
