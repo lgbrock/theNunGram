@@ -1,7 +1,12 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 // custom middleware for handling embedding of twitch clips
-const { videoOrigin, repeatURLParams, convertTwitchClip } = require('../middleware/customFunctions')
+const {
+  videoOrigin,
+  repeatURLParams,
+  convertTwitchClip,
+} = require("../middleware/customFunctions");
+const router = require("../routes/quotes");
 
 module.exports = {
   getPost: async (req, res) => {
@@ -16,9 +21,9 @@ module.exports = {
     try {
       const postCount = await Post.find().then((data) => data.length);
       const randomNum = Math.floor(Math.random() * postCount);
-      const post = await Post.find().skip(randomNum).limit(1);
-      console.log(post[0]);
-      res.render("randomPost.ejs", { post: post[0] });
+      // Awaiting randomly skipped post array and taking it's first (only) index.
+      const post = (await Post.find().skip(randomNum).limit(1))[0];
+      res.redirect(`/post/${post._id}`);
     } catch (err) {
       console.log(err);
     }
@@ -35,7 +40,11 @@ module.exports = {
       await Post.create({
         caption: post.caption,
         image: result.secure_url,
-        clip: convertTwitchClip(post.clip, 'thenungram.herokuapp.com', 'www.thenungram.herokuapp.com'),
+        clip: convertTwitchClip(
+          post.clip,
+          "thenungram.herokuapp.com",
+          "www.thenungram.herokuapp.com"
+        ),
         cloudinaryId: result.public_id,
         user: req.user.id,
         author: req.user.displayName,

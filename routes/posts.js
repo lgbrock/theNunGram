@@ -4,7 +4,6 @@ const upload = require("../middleware/multer");
 const { ensureAuth } = require("../middleware/auth");
 const postsController = require("../controllers/posts.js");
 
-
 // Renders a random Post's page
 router.get("/randomPost", ensureAuth, postsController.randomPost);
 //Get get a post By it's ID
