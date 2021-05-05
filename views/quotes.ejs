@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="/css/posts/style.css" />
-		<title>Quotes</title>
-	</head>
-	<body>
-		<!-- Renders a single Post -->
-		<h1>This is the Quotes Page</h1>
-		<% { %>
-		<div class="post">
-			<div>
-				<h3>Quotes: <%= quotes.quotes%></h3>
-			</div>
-			<h4>Caption: <%= quotes.caption%></h4>
-			<div>
-				<h4>Author: <%= quotes.author%></h4>
-			</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/posts/style.css" />
+    <title>Quotes</title>
+  </head>
+  <body>
+    <!-- Renders a single Post -->
+    <h1>This is the Quotes Page</h1>
+    <% for (quote of quotes) { %>
+    <div class="post">
+      <div>
+        <h3>Quotes: <%= quote.quote %></h3>
+      </div>
+      <div>
+        <h4>Author: <%= quote.author %></h4>
+      </div>
+	  </div>	
+      <% } %>
 
-			<section class="column">
-				<section class="right">
-					<ul class="nav">
-						<li><a href="/feed">Feed</a></li>
-						<li><a href="/profile">Profile</a></li>
-						<li><a href="/post/randomPost">Random Post</a></li>
-						<li><a href="/auth/logout">Logout</a></li>
-					</ul>
-				</section>
-			</section>
-		</div>
-		<% } %>
-	</body>
+      <section class="column">
+        <section class="right">
+          <ul class="nav">
+            <li><a href="/feed">Feed</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/post/randomPost">Random Post</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+          </ul>
+        </section>
+      </section>
+    </div>
+  </body>
 </html>

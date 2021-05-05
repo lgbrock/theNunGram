@@ -5,18 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../public/css/posts/style.css" />
-    <title>Document</title>
+    <title><%= post.caption %></title>
   </head>
   <body>
     <!-- Renders a single Post -->
     <h1>This is a Single Post Page</h1>
-    <% { %>
     <div class="post">
+
       <h3>Caption: <%= post.caption%></h3>
+      <p>Author: <%= post.author%> </p>
+      <p>Author: <%= post.clip%> </p>
+      <% if(post.clip != '') {%>
         <div>
-          <img src='<%= post.image%>'/>
+            <iframe src='<%= post.clip %>'>
+            </div>
+              <% } else { %>
+                <div>
+              <img src='<%= post.image%>'/>
+            </div>
+              <% } %>
         </div>
-        <p>Author: <%= post.author%> </p>
 
         <section class="column">
           <section class="right">
@@ -28,8 +36,6 @@
           </section>
       </section>
         <!-- Iframe is causing page to break so nothing will show below it. Twitch allows you to directly src twitch clips SEE README -->
-        <iframe src='<%= post.clip%>'/>
-    </div>
-    <% } %>
+
   </body>
 </html>

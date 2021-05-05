@@ -6,12 +6,14 @@ const PostSchema = new mongoose.Schema({
   },
   image: {
     type: String,
+    default: null,
   },
   clip: {
     type: String,
   },
   cloudinaryId: {
     type: String,
+    default: null,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,

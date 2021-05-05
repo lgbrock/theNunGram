@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/posts/style.css" />
+    <title>Quotes</title>
+  </head>
+  <body>
+    <!-- Renders a single Post -->
+    <h1>Add a Quote</h1>
+    <form action="/quotes/addQuote" method="POST">
+      <div>
+        <label for="quote">What was said?</label>
+        <input type="text" name="quote" />
+      </div>
+      <div>
+        <label for="author">Who said it?</label>
+        <input type="text" name="author" placeholder="author" />
+      </div>
+      <button type="submit">Upload...BOOM!</button>
+    </form>
+
+    <section class="column">
+      <section class="right">
+        <ul class="nav">
+          <li><a href="/feed">Feed</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/quotes/addQuote">Add Quote</a></li>
+          <li><a href="/post/randomPost">Random Post</a></li>
+
+          <li><a href="/auth/logout">Logout</a></li>
+        </ul>
+      </section>
+    </section>
+    z
+  </body>
+</html>
