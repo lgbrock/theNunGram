@@ -20,6 +20,7 @@
     </div>
 
     <h3>ADD A POST (all fields must be filled)</h3>
+    <%= typeof msg != 'undefined' ? msg : '' %> <!-- an error message if an unsupported clip is uploaded -->
     <form action="/post/addPost" enctype="multipart/form-data" method="POST">
 
       <div>
@@ -41,7 +42,7 @@
     <div class="posts">
         <p>Here are my posts:</p>
         <ul class="row list-unstyled">
-            <% for(let i=0; i<post.length; i++) {%>
+            <% for(let i=0; i < post.length; i++) {%>
                 <p> <%= post[i].caption %> </p>
                 <a href="/post/<%= post[i]._id%>">
                   <img class="img-fluid" src="<%= post[i].image%>">

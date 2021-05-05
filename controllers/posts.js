@@ -32,7 +32,7 @@ module.exports = {
   addPost: (req, res) => {
     res.render('addPost.ejs');
   },
-  createPost: async (req, res) => {
+  createPost: async (req, res) => { //goal: if 
     try {
       // if no there is no file uploaded set image and cloudinary values as null, but if there is upload to cloudinary and return that result back
       const result = !req.file
@@ -49,17 +49,28 @@ module.exports = {
           'herokuapp.com',
           'thenungram.herokuapp.com'
         ) 
-        : '';
-      await Post.create({
-        caption: post.caption,
-        image: result.secure_url,
-        clip,
-        cloudinaryId: result.public_id,
-        user: req.user.id,
-        author: req.user.displayName,
-      });
-      console.log('Post has been added');
-      res.redirect('/profile');
+        : null;
+        // if an unsupported file or clip is uploaded, send an error message.
+        if (clip === null) {
+          const posts = await Post.find({ user: req.user.id });
+          res.render('profile2', {
+            msg: 'Image or video clip type not supported.',
+            user: req.user,
+            post: posts
+          })
+        } else {
+          
+          await Post.create({
+            caption: post.caption,
+            image: result.secure_url,
+            clip,
+            cloudinaryId: result.public_id,
+            user: req.user.id,
+            author: req.user.displayName,
+          });
+          console.log('Post has been added');
+          res.redirect('/profile');
+        }
     } catch (err) {
       console.log(err);
     }
