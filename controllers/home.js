@@ -22,7 +22,7 @@ module.exports = {
       const posts = await Post.find();
       console.log(req.user);
       //renders feed page, and pass in our templating reference
-      res.render('feed.ejs', { posts, user });
+      res.render('feed.ejs', { posts });
       console.log('feed got! Hope youre hungry');
     } catch (err) {
       console.log(err);
