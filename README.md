@@ -43,3 +43,6 @@ c. /logout
 A. Add routes (PUT REQUESTS) To upvote/downvote imgages on singular posts.
 i. These would be PUT REQUEST.
 ii. May need 2, depending on front-end(like/dislike)
+
+B. allow editing of user bio
+[] display on profile, and allow PUT req to edit text

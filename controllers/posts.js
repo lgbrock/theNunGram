@@ -5,6 +5,7 @@ const {
   videoOrigin,
   repeatURLParams,
   convertTwitchClip,
+  checkIfTwitchClip,
 } = require('../middleware/customFunctions');
 const router = require('../routes/quotes');
 
@@ -31,7 +32,7 @@ module.exports = {
   addPost: (req, res) => {
     res.render('addPost.ejs');
   },
-  createPost: async (req, res) => {
+  createPost: async (req, res) => { //goal: if 
     try {
       // if no there is no file uploaded set image and cloudinary values as null, but if there is upload to cloudinary and return that result back
       const result = !req.file
@@ -42,21 +43,34 @@ module.exports = {
       // extracted into variable to handle ternary expression. if post.chip is not true set it equal to "" else set it to value sent in post.clip after running through twitch middleware
       const clip = !post.clip
         ? ''
-        : convertTwitchClip(
-            post.clip,
-            'herokuapp.com',
-            'thenungram.herokuapp.com'
-          );
-      await Post.create({
-        caption: post.caption,
-        image: result.secure_url,
-        clip,
-        cloudinaryId: result.public_id,
-        user: req.user.id,
-        author: req.user.displayName,
-      });
-      console.log('Post has been added');
-      res.redirect('/profile');
+        : ( checkIfTwitchClip(post.clip) )  // boolean check. if not a twitch clip, prevent upload. 
+        ? convertTwitchClip(
+          post.clip,
+          'herokuapp.com',
+          'thenungram.herokuapp.com'
+        ) 
+        : null;
+        // if an unsupported file or clip is uploaded, send an error message.
+        if (clip === null) {
+          const posts = await Post.find({ user: req.user.id });
+          res.render('profile2', {
+            msg: 'Image or video clip type not supported.',
+            user: req.user,
+            post: posts
+          })
+        } else {
+          
+          await Post.create({
+            caption: post.caption,
+            image: result.secure_url,
+            clip,
+            cloudinaryId: result.public_id,
+            user: req.user.id,
+            author: req.user.displayName,
+          });
+          console.log('Post has been added');
+          res.redirect('/profile');
+        }
     } catch (err) {
       console.log(err);
     }
