@@ -1,18 +1,18 @@
-const cloudinary = require("../middleware/cloudinary");
-const Post = require("../models/Post");
+const cloudinary = require('../middleware/cloudinary');
+const Post = require('../models/Post');
 // custom middleware for handling embedding of twitch clips
 const {
   videoOrigin,
   repeatURLParams,
   convertTwitchClip,
-} = require("../middleware/customFunctions");
-const router = require("../routes/quotes");
+} = require('../middleware/customFunctions');
+const router = require('../routes/quotes');
 
 module.exports = {
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post });
+      res.render('post.ejs', { post });
     } catch (err) {
       console.log(err);
     }
@@ -29,22 +29,23 @@ module.exports = {
     }
   },
   addPost: (req, res) => {
-    res.render("addPost.ejs");
+    res.render('addPost.ejs');
   },
   createPost: async (req, res) => {
     try {
-      // console.log(req.file.path);
+      // if no there is no file uploaded set image and cloudinary values as null, but if there is upload to cloudinary and return that result back
       const result = !req.file
         ? { image: null, cloudinaryId: null }
         : await cloudinary.uploader.upload(req.file.path);
 
       const post = await req.body;
+      // extracted into variable to handle ternary expression. if post.chip is not true set it equal to "" else set it to value sent in post.clip after running through twitch middleware
       const clip = !post.clip
-        ? ""
+        ? ''
         : convertTwitchClip(
             post.clip,
-            "herokuapp.com",
-            "thenungram.herokuapp.com"
+            'herokuapp.com',
+            'thenungram.herokuapp.com'
           );
       await Post.create({
         caption: post.caption,
@@ -54,8 +55,8 @@ module.exports = {
         user: req.user.id,
         author: req.user.displayName,
       });
-      console.log("Post has been added");
-      res.redirect("/profile");
+      console.log('Post has been added');
+      res.redirect('/profile');
     } catch (err) {
       console.log(err);
     }
