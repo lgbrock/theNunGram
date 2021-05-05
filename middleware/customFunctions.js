@@ -5,6 +5,18 @@ function videoOrigin (videoURL){
     return origin;
 }
 
+function checkIfTwitchClip (videoURL){
+  let url = new URL(videoURL)
+  let origin = url.hostname
+  console.log(origin)
+  let isItTwitch = (origin === 'clips.twitch.tv' || origin === 'www.twitch.tv' )
+  console.log(isItTwitch)
+  // if not, "clip" should be in the URL path
+  let isItAClip = String(url.pathname).split('/').includes('clip')
+  // console.log(isItAclip)
+  return origin === 'clips.twitch.tv' || (isItTwitch && isItAClip); 
+}
+
 // lets you repeat the same param with different values. urlParam is "?parent=" for example. arr of strings as values. E.g. query?parent=value
 function repeatURLParams (urlParam, arr){
   let output = '';
@@ -26,7 +38,7 @@ function convertTwitchClip (...arguments) {
     // if it's an embed link in the following format: https://clips.twitch.tv/embed?clip=CleverDependablePoultryLitFam-_dTbDHINZ38jB7eg&parent=localhost:3000
      // check if url.searchParams.get("clip") is null
     if (url.searchParams.get("clip") !== null) {
-    embeddableURL = `${url.origin + url.pathname + '?clip=' + url.searchParams.get("clip") + parentSiteParams}`
+      embeddableURL = `${url.origin + url.pathname + '?clip=' + url.searchParams.get("clip") + parentSiteParams}`
     } else {
       embeddableURL = `${url.origin + '/embed?clip=' + url.pathname.slice(1) + parentSiteParams}`
     }
@@ -42,4 +54,4 @@ function convertTwitchClip (...arguments) {
   }
 }
 
-module.exports = { videoOrigin, repeatURLParams, convertTwitchClip}
+module.exports = { videoOrigin, checkIfTwitchClip, repeatURLParams, convertTwitchClip}

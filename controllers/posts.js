@@ -5,6 +5,7 @@ const {
   videoOrigin,
   repeatURLParams,
   convertTwitchClip,
+  checkIfTwitchClip,
 } = require('../middleware/customFunctions');
 const router = require('../routes/quotes');
 
@@ -42,11 +43,13 @@ module.exports = {
       // extracted into variable to handle ternary expression. if post.chip is not true set it equal to "" else set it to value sent in post.clip after running through twitch middleware
       const clip = !post.clip
         ? ''
-        : convertTwitchClip(
-            post.clip,
-            'herokuapp.com',
-            'thenungram.herokuapp.com'
-          );
+        : ( checkIfTwitchClip(post.clip) )  // boolean check. if not a twitch clip, prevent upload. 
+        ? convertTwitchClip(
+          post.clip,
+          'herokuapp.com',
+          'thenungram.herokuapp.com'
+        ) 
+        : '';
       await Post.create({
         caption: post.caption,
         image: result.secure_url,
