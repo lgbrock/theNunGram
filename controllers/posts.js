@@ -40,11 +40,15 @@ module.exports = {
       await Post.create({
         caption: post.caption,
         image: result.secure_url,
+<<<<<<< HEAD
         clip: convertTwitchClip(
           post.clip,
           "thenungram.herokuapp.com",
           "www.thenungram.herokuapp.com"
         ),
+=======
+        clip: convertTwitchClip(post.clip, 'herokuapp.com', 'thenungram.herokuapp.com'),
+>>>>>>> upstream/main
         cloudinaryId: result.public_id,
         user: req.user.id,
         author: req.user.displayName,
