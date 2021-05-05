@@ -1,6 +1,7 @@
 // where does a video come from? E.g. Twitch
 function videoOrigin (videoURL){
     let origin = new URL(videoURL).hostname
+    console.log(origin)
     return origin;
 }
 
@@ -10,6 +11,7 @@ function repeatURLParams (urlParam, arr){
   for (let str of arr){
     output += `${urlParam}${str}`
   }
+  console.log(output)
   return output;
 }
 
