@@ -32,12 +32,16 @@ module.exports = {
   addPost: (req, res) => {
     res.render('addPost.ejs');
   },
-  createPost: async (req, res) => { //goal: if 
+  createPost: async (req, res) => { 
     try {
       // if no there is no file uploaded set image and cloudinary values as null, but if there is upload to cloudinary and return that result back
       const result = !req.file
         ? { image: null, cloudinaryId: null }
         : await cloudinary.uploader.upload(req.file.path);
+
+        console.log(result.secure_url)
+        console.log(result.public_id)
+        // transformCloudinaryImage(result.secure_url, "c_scale,w_650,q_auto,f_auto") 
 
       const post = await req.body;
       // extracted into variable to handle ternary expression. if post.chip is not true set it equal to "" else set it to value sent in post.clip after running through twitch middleware

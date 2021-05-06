@@ -52,6 +52,16 @@ function convertTwitchClip (...arguments) {
     embeddableURL = `https://clips.twitch.tv/embed?clip=${clipParam + parentSiteParams}`
     return embeddableURL;
   }
+  // pass in params: cloudinary secure_url, and Cloudinary API transformation params as one string 
+  // transformCloudinaryImage(secure_URL, "c_scale,w_650,q_auto,f_auto")
+  function cloudinaryTransformImage (...arguments) {
+    let {secure_url, transformationParams} = arguments;
+    const url = new URL(secure_url); 
+    let pathnamesArr = String(url.pathname).split('/');
+    let transformedPath = pathnamesArr.splice(-3, 0, transformationParams)
+    console.log(transformationParams)
+    console.log(transformedPath)
+  }
 }
 
 module.exports = { videoOrigin, checkIfTwitchClip, repeatURLParams, convertTwitchClip}
