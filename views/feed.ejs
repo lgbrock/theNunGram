@@ -42,17 +42,25 @@
                 <div class="tm-content-div">
                       <span>Caption: </span>
                       <h1><%= post.caption%></h1>
-                      <a href="/post/<%= post._id%>">
-                        <img src="<%= post.image %>" />
-                      </a>
-                      <div class="twitch-clip">
-                      <iframe
-                        src="<%= post.clip %>"
-                        height="400"
-                        width="300"
-                        allowfullscreen="true"
-                      ></iframe>
-                    </div>
+                      <h1>You are logged in as <%= user.displayName %> </h1>
+                      <h1>Leon Quote: <%= quote.quote %> </h1>
+                      <p>Contributed By: <%= quote.contributedBy %> </p>
+                      <% if( post.clip === '' ) { %>
+                        <a href="/post/<%= post._id%>">
+                          <img src="<%= post.image %>" />
+                        </a>
+                       <%} else { %>
+                        <div class="twitch-clip">
+                          <iframe
+                            src="<%= post.clip %>"
+                            height="400"
+                            width="300"
+                            allowfullscreen="true">
+                         </iframe>
+                    
+                       </div>           
+                      <% } %>
+                      
                     <div class="credentials">
                       <span>Author: <%= post.author %></span> 
                       <span>Created At: <%= post.createdAt %></span>

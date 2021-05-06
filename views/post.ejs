@@ -15,16 +15,21 @@
       <h3>Caption: <%= post.caption%></h3>
       <p>Author: <%= post.author%> </p>
       <p>Author: <%= post.clip%> </p>
-      <% if(post.clip != '') {%>
-        <div>
-            <iframe src='<%= post.clip %>'>
-            </div>
-              <% } else { %>
-                <div>
-              <img src='<%= post.image%>'/>
-            </div>
-              <% } %>
-        </div>
+      <% if( post.clip === '' ) { %>
+        <a href="/post/<%= post._id%>">
+          <img src="<%= post.image %>" />
+        </a>
+       <%} else { %>
+        <div class="twitch-clip">
+          <iframe
+            src="<%= post.clip %>"
+            height="400"
+            width="300"
+            allowfullscreen="true">
+         </iframe>
+       </div>           
+      <% } %>
+       
 
         <section class="column">
           <section class="right">
