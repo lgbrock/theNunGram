@@ -12,6 +12,7 @@ const homeRoutes = require('./routes/home');
 const authRoutes = require('./routes/auth');
 const postsRoute = require('./routes/posts');
 const quotesRoutes = require('./routes/quotes');
+const methodOverride = require('method-override')
 
 
 // initialize express
@@ -35,6 +36,7 @@ app.use(morgan('dev')); //logging middleware. Check console for logs
 //body-parsing middleware (required to parse incoming JSON)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"))
 
 //initialize express sessions - used to persist connection to db
 app.use(

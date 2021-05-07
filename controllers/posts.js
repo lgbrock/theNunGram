@@ -9,11 +9,13 @@ const {
 } = require('../middleware/customFunctions');
 const router = require('../routes/quotes');
 
+
 module.exports = {
   getPost: async (req, res) => {
+    
     try {
       const post = await Post.findById(req.params.id);
-      res.render('post.ejs', { post });
+      res.render('post.ejs', { post, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -80,4 +82,22 @@ module.exports = {
       console.log(err);
     }
   },
+  deletePost: async (req,res) => { 
+    console.log(req.params.id)   
+    try {
+      let post = await Post.findById({ _id: req.params.id });
+
+      if (post.cloudinaryId != undefined) {
+        await cloudinary.uploader.destroy(post.cloudinaryId);
+      } 
+      
+      await Post.remove({ _id: req.params.id });
+      
+      res.redirect('/feed')
+
+    } catch (err) {
+      console.log(err)
+      res.redirect('/feed')
+    }
+  }
 };
