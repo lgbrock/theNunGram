@@ -11,15 +11,12 @@
   </head>
   <body>
     <!-- Renders a single Post -->
-    <h1>This is a Single Post Page</h1>
-    <div class="post" id='userPost' data-id="<%= post.user %>">
 
-      <h3>Caption: <%= post.caption%></h3>
-      <p>Author: <%= post.author%> </p>
-      <p>Author: <%= post.clip%> </p>
+      <h1 class='caption'><%= post.caption %></h1>
+      <span class='author'>Author: <%= post.author%> </span>
       <% if(post.clip != '') {%>
         <div>
-            <iframe src='<%= post.clip %>'>
+            <iframe src='<%= post.clip %>'></iframe>
             </div>
               <% } else { %>
                 <div>
@@ -27,22 +24,26 @@
             </div>
               <% } %>
         </div>
-        <% if (post.user === user._id){ %>
-        <form 
-        action="/post/deletePost/<%= post._id %>?_method=DELETE"
-        method="POST"
-        class="delete-post"
-        >
-        <button class="fa fa-trash" type='submit'></button>
-          </form>
-          <% } %>
-          <form 
-        action="/post/deletePost/<%= post._id %>?_method=DELETE"
-        method="POST"
-        class="delete-post"
-        >
-        <button class="fa fa-trash" type='submit'></button>
-          </form>
+        <span><%= post.user %></span>
+        <% if(JSON.stringify(user._id ) === JSON.stringify(post.user)) {%>
+
+          <form name='bunny'
+          action="/post/<%= post._id %>/deletePost?_method=DELETE"
+          method="POST"
+          class="delete-post"
+          >
+          <button class="fa fa-trash" type='submit'></button>
+        </form>
+        <% } %>
+          <div>
+            <% if (post.likes) { %>
+                <span><%= post.likes %></span>
+            <% } %>
+            <form action="/post/<%= post._id %>/addLike?_method=PUT" method='POST'>
+              <button type="submit">
+              <img style='width: 40px' src='/imgs/nun.png'/></button>
+          </a></form>
+          </div>
         <section class="column">
           <section class="right">
               <ul class="nav">
