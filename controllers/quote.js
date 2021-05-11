@@ -3,8 +3,11 @@ const Quote = require('../models/Quote');
 module.exports = {
   getQuotes: async (req, res) => {
     try {
-      const quotes = await Quote.find();
-      res.render('quotes.ejs', { quotes });
+      const quoteCount = await Quote.find().then((data) => data.length);
+      const randomNum = Math.floor(Math.random() * quoteCount);
+      const quote = (await Quote.find().skip(randomNum).limit(1))[0];
+
+      res.json(quote);
     } catch (err) {
       console.error(err);
     }
@@ -14,11 +17,15 @@ module.exports = {
   },
   createQuote: async (req, res) => {
     try {
-      const { quote, author } = await req.body;
-      Quote.create({ quote, author });
-      // console.log(`quote ${quote}, author ${author}`);
-      // res.render("quotes.ejs");
-      res.redirect(`/quotes`);
+      const user = await req.user.displayName;
+
+      const { quote } = await req.body;
+      Quote.create({
+        quote: quote,
+        contributedBy: user,
+        createdAt: new Date(),
+      });
+      res.redirect(`/feed`);
     } catch (err) {
       console.log(err);
     }
