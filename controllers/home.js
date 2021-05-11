@@ -1,10 +1,13 @@
 const User = require('../models/User');
 const Post = require('../models/Post');
-const Quote = require('../models/Quote')
+const Quote = require('../models/Quote');
 
 module.exports = {
   getHome: (req, res) => {
     res.render('index.ejs');
+  },
+  getInfo: (req, res) => {
+    res.render('info.ejs');
   },
   getProfile: async (req, res) => {
     try {
@@ -27,7 +30,6 @@ module.exports = {
       const randomNum = Math.floor(Math.random() * quoteCount);
       const quote = (await Quote.find().skip(randomNum).limit(1))[0];
 
-      
       //renders feed page, and pass in our templating reference
       res.render('feed.ejs', { posts, user: user, quote: quote });
       console.log('feed got! Hope youre hungry');
