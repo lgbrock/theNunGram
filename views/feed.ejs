@@ -37,12 +37,15 @@
               "<%= post.caption%>"
             </h1>
             <div class="border-solid border-4 border-gray-600 container md flex justify-center md">
-              <a href="/post/<%= post._id%>">
+              <% if(post.image === null) { %> 
+                <div class="twitch-clip flex justify-center">
+                  <iframe  frameborder="0" src="<%= post.clip %>" height="400" width="300" allowfullscreen="true"></iframe>
+                </div>
+                <% } else{ %>
+                <a href="/post/<%= post._id%>">
                 <img class="object-contain" src="<%= post.image %>" />
               </a>
-            </div>
-            <div class="twitch-clip flex justify-center">
-              <iframe  frameborder="0" src="<%= post.clip %>" height="400" width="300" allowfullscreen="true"></iframe>
+              <% } %> 
             </div>
             <div class="credentials">
               <span>Author: <%= post.author %></span>
@@ -67,21 +70,21 @@
           </a>
         </li>
         <li class="mr-3 flex-1">
-          <a href="#"
+          <a href="/profile"
             class="block py-1 md:py-3 pl-1 align-middle text-gray-800 no-underline hover:text-pink-500 border-b-2 border-gray-800 md:border-gray-900 hover:border-pink-500">
             <i class="fas fa-link pr-0 md:pr-3"></i><span
               class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Submit Post</span>
           </a>
         </li>
         <li class="mr-3 flex-1">
-          <a href="#"
+          <a href="/quotes/addQuote"
             class="block py-1 md:py-3 pl-1 align-middle text-gray-800 no-underline hover:text-pink-500 border-b-2 border-gray-800 md:border-gray-900 hover:border-pink-500">
             <i class="fas fa-quote-right pr-0 md:pr-3"></i><span
               class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Submit Leon Quote</span>
           </a>
         </li>
         <li class="mr-3 flex-1">
-          <a href="#"
+          <a href="/post/randomPost"
             class="block py-1 md:py-3 pl-1 align-middle text-gray-800 no-underline hover:text-pink-500 border-b-2 border-gray-800 md:border-gray-900 hover:border-pink-500">
             <i class="fas fa-magic pr-0 md:pr-3"></i><span
               class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Random Post Automagic</span>
@@ -95,7 +98,7 @@
           </a>
         </li>
         <li class="mr-3 flex-1">
-          <a href="#"
+          <a href="/info"
             class="block py-1 md:py-3 pl-1 align-middle text-gray-800 no-underline hover:text-pink-500 border-b-2 border-gray-800 md:border-gray-900 hover:border-pink-500">
             <i class="fas fa-code pr-0 md:pr-3"></i><span
               class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">LEARN TO CODE!</span>
@@ -105,13 +108,6 @@
           <a href="/auth/logout"
             class="block py-1 md:py-3 pl-1 align-middle text-gray-800 no-underline hover:text-pink-500 border-b-2 border-gray-800 md:border-gray-900 hover:border-pink-500">
             <i class="fas fa-sign-out-alt pr-0 md:pr-3"></i><span
-              class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Logout</span>
-          </a>
-        </li>
-        <li class="mr-3 flex-1">
-          <a href="#"
-            class="block py-1 md:py-3 pl-1 align-middle text-gray-800 no-underline hover:text-pink-500 border-b-2 border-gray-800 md:border-gray-900 hover:border-pink-500">
-            <i class="fas fa-link pr-0 md:pr-3"></i><span
               class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Logout</span>
           </a>
         </li>

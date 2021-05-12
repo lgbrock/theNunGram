@@ -12,6 +12,8 @@ router.get('/', ensureGuest, homeController.getHome);
 router.get('/profile', ensureAuth, homeController.getProfile);
 //Gets the Feed
 router.get('/feed', ensureAuth, homeController.getFeed);
+//Gets Leon Info
+router.get('/info', homeController.getInfo)
 
 //exporting our router
 module.exports = router;
