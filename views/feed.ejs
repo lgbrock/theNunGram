@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="../public/css/style.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
-  <title>Document</title>
+  <title>The Nungram Feed</title>
 </head>
 
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
@@ -48,8 +48,9 @@
               <% } %> 
             </div>
             <div class="credentials">
-              <span>Author: <%= post.author %></span>
-              <span>Created At: <%= post.createdAt %></span>
+            <strong><span>Author:</strong>  <%= post.author %></span>
+              <br />
+              <span><strong>Created At:</strong> <%= post.createdAt %></span>
             </div>
           </div>
           <% } %>
