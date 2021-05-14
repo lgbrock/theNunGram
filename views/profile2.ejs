@@ -9,7 +9,6 @@
   </head>
   <body>
     <% { %>
-
     <div class='header'>
       <h2>This is <%= user.firstName%>'s Profile</h2>
         <p>This is my bio: <%= user.bio%></p>
@@ -18,11 +17,9 @@
           <h4>Profile Pic</h4> 
         </section>
     </div>
-
     <h3>ADD A POST </h3>
     <%= typeof msg != 'undefined' ? msg : '' %> <!-- an error message if an unsupported clip is uploaded -->
     <form action="/post/addPost" enctype="multipart/form-data" method="POST">
-
       <div>
         <label for="content">Got a Pic?</label>
         <span> Only supports: .jpg, .png, jpeg,</span>
@@ -38,7 +35,6 @@
       </div>
       <button type="submit">Upload...BOOM!</button>
     </form>
-
     <div class="posts">
         <p>Here are my posts:</p>
         <ul class="row list-unstyled">
