@@ -4,147 +4,58 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Add Post</title>
+    <link rel="stylesheet" href="/css/addPost/style.css" />
   </head>
-  <body class="bg-green-700">
+  <body>
     <% { %>
-      <section class="bg-indigo-700 p-4 flex justify-between items-center">
-        <!-- Left -->
-        <div class="flex item-center">
-          <a href="/profile" class="inline-block p-2 text-indigo-200 hover:text-indigo-100 mr-2">Home</a>
-          <a href="/feed" class="inline-block p-2 text-indigo-200 hover:text-indigo-100 mr-2">Feed</a>
-        </div>
-        <!-- Center -->
-        <div class="flex item-center"><img src="https://imgur.com/sNAflYw" alt="nunhead" width="50" class="mr-2"></div>
-
-        <div class="flex item-center">
-          <div class="hidden md:block">
-            <a href="/post/randomPost" class="inline-block p-2 text-indigo-200 hover:text-indigo-100 mr-2">Random Post</a>
-            <a href="/auth/logout" class="inline-block p-2 text-indigo-200 hover:text-indigo-100 mr-2">Logout</a>
-            <!-- <a href="#" class="inline-block py-2 px-4 text-yellow-700 bg-yellow-400 hover:bg-yellow-300 hover:text-yellow-800 rounded transition ease-in duration-150">Random Post</a> -->
-          </div>
-        </div>
-      </section>
-
-      <!-- who's profile, bio, pic -->
-      <section>
-        <div class="md:flex justify-between py-20 px-10 bg-indigo-600 text-indigo-100">
-
-          <!--   left -->
-          <div class="md:w-1/2 mb-10 md:mb-0">
-            <h2 class="text-2xl md:text-4xl lg:text-6xl text-white mb-6">This is <%= user.firstName%>'s Profile</h2>
-            <p class="mb-6">This is my bio: <%= user.bio%></p>
-            <!-- <a href="#" class="inline-block py-3 px-6 text-lg bg-gray-400 text-gray-800 hover:bg-gray-300 rounded mr-2">Learn More</a>
-            <a href="#" class="inline-block py-3 px-6 text-lg bg-orange-400 text-orange-800 hover:bg-orange-300 rounded">Get Started</a> -->
-          </div>
-        
-          <!--   right -->
-          <section class="profile-pic">
-            <img class="w-auto flex justify-between rounded shadow-2xl" src='<%= user.image%>'> 
-          </section>
-          <!-- <div class="md:w-1/2">
-            <img src="https://ga-core.s3.amazonaws.com/production/uploads/instructor/image/2051/thumb_Screen_Shot_2016-08-10_at_12.52.38_AM.png" alt="leonnoel" class="w-1/2 rounded shadow-2xl">
-          </div> -->
-        
-        </div>
-      </section>
-
-      <!-- Add a post, file, caption, link -->
-      <section class="px-auto">
-        <section>
-          <div class="flex item-center bg-indigo-500 text-indigo-100">
-            <h3 class="text-2xl md:text-4xl lg:text-6xl text-white mx-auto">ADD A POST </h3>
-          </div>
-          <%= typeof msg != 'undefined' ? msg : '' %> <!-- an error message if an unsupported clip is uploaded -->
+    <div class='header'>
+      <h2>This is <%= user.firstName%>'s Profile</h2>
+        <p>This is my bio: <%= user.bio%></p>
+        <section class="profile-pic">
+          <img src='<%= user.image%>'>
+          <h4>Profile Pic</h4> 
         </section>
-
-
-        <!-- CARD COLUMNS -->
-        <!-- Flex on med screens and up -->
-        <section class="flex mx-auto">
-          <div class="md:flex justify-content flex-wrap">
-            <div
-              class="flex-1 text-gray-700 text-center bg-indigo-400 px-5 py-5 m-2 rounded"
-            >
-              <div class="lg:flex lg:items-center">
-                <div class="lg:flex-shrink-0">
-                  <img class="rounded-lg lg:w-64" src="https://i.ibb.co/w4wGYvQ/img1.jpg" alt="">
-                </div>
-                <div class="mt-4 lg:mt-0 lg:ml-6">
-                  <form action="/post/addPost" enctype="multipart/form-data" method="POST" class="mt-4 lg:mt-0 lg:ml-6">
-                    <div class="uppercase tracking-wide text-sm text-indigo-600 font-bold" >
-                      <label for="caption">Got a Pic?</label>
-                      <span> Only supports: .jpg, .png, jpeg,</span>
-                      <input class="block mt-1 text-lg leading-tight font-semibold text-gray-900 hover:underline" type="file" name="file" />
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            
-            <div
-              class="flex-1 text-gray-700 text-center bg-indigo-400 px-5 py-5 m-2 rounded"
-            >
-              <div class="lg:flex lg:items-center">
-                <div class="lg:flex-shrink-0">
-                  <img class="rounded-lg lg:w-64" src="https://i.ibb.co/w4wGYvQ/img1.jpg" alt="">
-                </div>
-                <form action="/post/addPost" enctype="multipart/form-data" method="POST" class="mt-4 lg:mt-0 lg:ml-6">
-                  <div class="uppercase tracking-wide text-sm text-indigo-600 font-bold" >
-                    <label for="caption">Give us a Caption</label>
-                    <input type="text" name="caption" placeholder="CLEVER CAPTION"/>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div
-              class="flex-1 text-gray-700 text-center bg-gray-400 px-5 py-5 m-2 rounded"
-            >
-              <div class="lg:flex lg:items-center">
-                <div class="lg:flex-shrink-0">
-                  <img class="rounded-lg lg:w-64" src="https://i.ibb.co/w4wGYvQ/img1.jpg" alt="">
-                </div>
-                <div class="mt-4 lg:mt-0 lg:ml-6">
-                  <form action="/post/addPost" enctype="multipart/form-data" method="POST" class="mt-4 lg:mt-0 lg:ml-6">
-                    <div class="uppercase tracking-wide text-sm text-indigo-600 font-bold">
-                      <label for="caption">Got a Twitch Clip? Paste it here</label>
-                      <input type="text" name="clip" placeholder="TWITCH LINK"/>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </section>
-
-        <!-- Button -->
-        <section class="flex-wrap">
-          <div class="inline-block py-3 px-6 text-lg bg-gray-400 text-gray-800 hover:bg-gray-300 rounded mx-auto">
-            <button type="submit" >Upload...BOOM!</button>
-          </div>
-        </section>
-
-        
-      </section>
-
-
-          
-   
-  <section>
-    <div class="flex text-align-center uppercase tracking-wide text-sm text-indigo-600 font-bold posts">
-      <p>Here are my posts:</p>
-      <ul class="row list-unstyled">
-          <% for(let i=0; i < post.length; i++) {%>
-              <p> <%= post[i].caption %> </p>
-              <a href="/post/<%= post[i]._id%>">
-                <img class="img-fluid" src="<%= post[i].image%>">
-              </a>
-          <% } %> 
-    </div> 
-  </section>
-    
+    </div>
+    <h3>ADD A POST </h3>
+    <%= typeof msg != 'undefined' ? msg : '' %> <!-- an error message if an unsupported clip is uploaded -->
+    <form action="/post/addPost" enctype="multipart/form-data" method="POST">
+      <div>
+        <label for="content">Got a Pic?</label>
+        <span> Only supports: .jpg, .png, jpeg,</span>
+        <input class="content" type="file" name="file" />
+      </div>
+      <div>
+        <label for="caption">Give us a Caption</label>
+        <input type="text" name="caption" placeholder="CLEVER CAPTION"/>
+      </div>
+      <div>
+        <label for="clip">Got a Twitch Clip? Paste it here</label>
+        <input type="text" name="clip" placeholder="TWITCH LINK"/>
+      </div>
+      <button type="submit">Upload...BOOM!</button>
+    </form>
+    <div class="posts">
+        <p>Here are my posts:</p>
+        <ul class="row list-unstyled">
+            <% for(let i=0; i < post.length; i++) {%>
+                <p> <%= post[i].caption %> </p>
+                <a href="/post/<%= post[i]._id%>">
+                  <img class="img-fluid" src="<%= post[i].image%>">
+                </a>
+            <% } %> 
+    </div>  
     <% } %>   
+    
+    <section class="column">
+        <section class="right">
+            <ul class="nav">
+                <li>Home</li>
+                <li><a href='/feed'>Feed</a></li>
+                <li><a href='/post/randomPost'>Random Post</a></li>
+                <li><a href='/auth/logout'>Logout</a></li>
+            </ul>
+        </section>
+    </section>
   </body>
 </html>
