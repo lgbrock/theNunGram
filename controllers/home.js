@@ -23,7 +23,7 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       //finds all posts
-      const posts = await Post.find();
+      const posts = await Post.find().sort({ createdAt: 'desc' }).lean();
       const user = await req.user;
 
       const quoteCount = await Quote.find().then((data) => data.length);
