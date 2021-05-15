@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 
     <!-- Public CSS -->
-    <link rel="stylesheet" href="../public/css/posts/style.css" />
+    <link rel="stylesheet" href="/css/posts/style.css" />
   </head>
   <body>
     <!-- Renders a single Post -->
@@ -28,25 +28,27 @@
             </div>
               <% } %>
         </div>
-        <% if(JSON.stringify(user._id ) === JSON.stringify(post.user)) {%>
 
-          <form name='bunny'
-          action="/post/<%= post._id %>/deletePost?_method=DELETE"
-          method="POST"
-          class="delete-post"
-          >
-          <button class="fa fa-trash" type='submit'></button>
-        </form>
-        <% } %>
-          <div>
+          <div class='likes-container'>
             <% if (post.likes) { %>
-                <span><%= post.likes %></span>
+                <span class='likes'><%= post.likes %></span>
             <% } %>
             <form action="/post/<%= post._id %>/addLike?_method=PUT" method='POST'>
-              <button type="submit">
+              <button class='submit' type="submit">
               <img style='width: 40px' src='/imgs/nun.png'/></button>
           </a></form>
-          </div>
+
+          <% if(JSON.stringify(user._id ) === JSON.stringify(post.user)) {%>
+
+            <form name='bunny'
+            action="/post/<%= post._id %>/deletePost?_method=DELETE"
+            method="POST"
+            class="delete-post"
+            >
+            <button class="fa fa-trash" type='submit'></button>
+          </form>
+          <% } %>
+        </div>
         <section class="column">
           <section class="right">
               <ul class="nav">
