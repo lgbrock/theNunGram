@@ -30,6 +30,8 @@ module.exports = {
     }
   },
   addPost: (req, res) => {
+    // console.log("yes");
+    // res.json("yes");
     res.render("addPost.ejs");
   },
   createPost: async (req, res) => {
