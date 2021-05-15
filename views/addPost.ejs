@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Quotes</title>
+    <title>Create your own post</title>
 
     <!-- Font Awesome -->
     <link
@@ -28,17 +28,17 @@
     <link rel="stylesheet" href="/css/posts/style.css" />
   </head>
   <body>
-    <h3>ADD A POST</h3>
+    <h3>Add a post!</h3>
     <div><%= typeof msg != 'undefined' ? msg : '' %></div>
     <!-- an error message if an unsupported clip is uploaded -->
     <form action="/post/addPost" enctype="multipart/form-data" method="POST">
       <div>
         <label for="content">Got a Pic?</label>
-        <span> Only supports: .jpg, .png, jpeg,</span>
+        <span>Only supports: .jpg, .png, jpeg</span>
         <input class="content" type="file" name="file" />
       </div>
       <div>
-        <label for="caption">Give us a Caption</label>
+        <label for="caption">Give us a caption:</label>
         <input type="text" name="caption" placeholder="CLEVER CAPTION" />
       </div>
       <div>
