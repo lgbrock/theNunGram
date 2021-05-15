@@ -7,6 +7,9 @@ const postsController = require("../controllers/posts.js");
 // Renders a random Post's page
 router.get("/randomPost", ensureAuth, postsController.randomPost);
 
+// Get to create a post
+router.get("/addPost", postsController.addPost);
+
 //Get get a post By it's ID
 router.get("/:id", postsController.getPost);
 

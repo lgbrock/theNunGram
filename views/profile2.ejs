@@ -27,7 +27,7 @@
   <!-- Public CSS -->
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/addPost/style.css" />
-  <!-- <link rel="stylesheet" href="\css\post\post-style.css">  -->
+  <!-- <link rel="stylesheet" href="\css\post\post-style.css"> --> 
   </head>
   <body>
 
@@ -41,24 +41,7 @@
         </section>
     </div>
 
-    <h3>ADD A POST </h3>
-    <div><%= typeof msg != 'undefined' ? msg : '' %></div> <!-- an error message if an unsupported clip is uploaded -->
-    <form action="/post/addPost" enctype="multipart/form-data" method="POST">
-      <div>
-        <label for="content">Got a Pic?</label>
-        <span> Only supports: .jpg, .png, jpeg,</span>
-        <input class="content" type="file" name="file" />
-      </div>
-      <div>
-        <label for="caption">Give us a Caption</label>
-        <input type="text" name="caption" placeholder="CLEVER CAPTION"/>
-      </div>
-      <div>
-        <label for="clip">Got a Twitch Clip? Paste it here</label>
-        <input type="text" name="clip" placeholder="TWITCH LINK"/>
-      </div>
-      <button type="submit">Upload...BOOM!</button>
-    </form>
+    
     <div class="posts">
         <p>Here are my posts:</p>
         <ul class="row list-unstyled">
@@ -72,7 +55,63 @@
     <% } %>   
 
     <!-- Nav Bar -->
-    <%- include('partials/main-nav') %>
+    <section>
+      <div
+      class="w-auto md:w-1/6 bg-gray-900 md:bg-gray-900 px-2 text-center fixed bottom-0 md:pt-8 md:top-0 md:left-0 h-16 md:h-screen md:border-r-4 md:border-gray-600">
+      <div class="md:relative mx-auto lg:float-right lg:px-6">
+        <ul class="list-reset flex flex-row md:flex-col text-center md:text-left">
+          <li class="mr-3 flex-1">
+            <a href="#"
+              class="block py-1 md:py-3 pl-1 align-middle text-gray-800 no-underline hover:text-pink-500 border-b-2 border-gray-800 md:border-gray-900 hover:border-pink-500">
+              <i class="fas fa-arrow-circle-up pr-0 md:pr-3"></i><span
+                class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Top of Page</span>
+            </a>
+          </li>
+          <li class="mr-3 flex-1">
+            <a href="/profile"
+              class="block py-1 md:py-3 pl-1 align-middle text-gray-800 no-underline hover:text-pink-500 border-b-2 border-gray-800 md:border-gray-900 hover:border-pink-500">
+              <i class="fas fa-link pr-0 md:pr-3"></i><span
+                class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Submit Post</span>
+            </a>
+          </li>
+          <li class="mr-3 flex-1">
+            <a href="/quotes/addQuote"
+              class="block py-1 md:py-3 pl-1 align-middle text-gray-800 no-underline hover:text-pink-500 border-b-2 border-gray-800 md:border-gray-900 hover:border-pink-500">
+              <i class="fas fa-quote-right pr-0 md:pr-3"></i><span
+                class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Submit Leon Quote</span>
+            </a>
+          </li>
+          <li class="mr-3 flex-1">
+            <a href="/post/randomPost"
+              class="block py-1 md:py-3 pl-1 align-middle text-gray-800 no-underline hover:text-pink-500 border-b-2 border-gray-800 md:border-gray-900 hover:border-pink-500">
+              <i class="fas fa-magic pr-0 md:pr-3"></i><span
+                class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Random Post Automagic</span>
+            </a>
+          </li>
+          <li class="mr-3 flex-1">
+            <a href="/profile"
+              class="block py-1 md:py-3 pl-1 align-middle text-gray-800 no-underline hover:text-pink-500 border-b-2 border-gray-800 md:border-gray-900 hover:border-pink-500">
+              <i class="fas fa-id-badge pr-0 md:pr-3"></i><span
+                class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Profile</span>
+            </a>
+          </li>
+          <li class="mr-3 flex-1">
+            <a href="/info"
+              class="block py-1 md:py-3 pl-1 align-middle text-gray-800 no-underline hover:text-pink-500 border-b-2 border-gray-800 md:border-gray-900 hover:border-pink-500">
+              <i class="fas fa-code pr-0 md:pr-3"></i><span
+                class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">LEARN TO CODE!</span>
+            </a>
+          </li>
+          <li class="mr-3 flex-1">
+            <a href="/auth/logout"
+              class="block py-1 md:py-3 pl-1 align-middle text-gray-800 no-underline hover:text-pink-500 border-b-2 border-gray-800 md:border-gray-900 hover:border-pink-500">
+              <i class="fas fa-sign-out-alt pr-0 md:pr-3"></i><span
+                class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
   
 
 
