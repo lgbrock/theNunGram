@@ -16,16 +16,23 @@ body {
 
 .profile-pic {
 	display: flex;
-	flex-direction: row;
-	align-items: flex-end;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	padding: 10px;
 }
-
+.profile-pic h2 {
+	font-weight: bold;
+	font-size: 40px;
+}
+.profile-img {
+	width: 9rem;
+}
 img {
-	width: 7rem;
+	/* width: 9rem; */
 	border-radius: 10px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-	margin: 10px;
+	/* margin: 1%; */
 }
 
 h2 {
@@ -61,13 +68,33 @@ button {
 
 /*probably have to change this to work with the feed posts as well*/
 .posts {
-	height: 300px;
-	width: 50%;
-	border: 2px solid white;
-	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	margin: 20px;
 }
-
+.post {
+	background-color: rgba(211, 211, 211, 0.55);
+	border: 2px solid white;
+	border-radius: 10px;
+	margin: 0.85%;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 2% 4%;
+}
+.postCaption {
+	display: flex;
+	justify-content: center;
+	font-size: 24px;
+	font-weight: bold;
+}
+.twitch-clip {
+	margin-top: 4%;
+	padding-bottom: 4%;
+}
 .nav {
 	border-radius: 10px;
 	background: white;
@@ -87,7 +114,7 @@ a {
 	text-align: center;
 	margin: 5px;
 	padding: 5px;
-	padding-left: 20px;
+	padding-left: 30px;
 }
 
 li:hover {
@@ -154,6 +181,7 @@ li:hover {
 }
 p {
 	line-height: 2;
+	font-size: 2rem;
 }
 
 .tm-button {
