@@ -1,0 +1,104 @@
+*{
+    box-sizing: border-box;
+    }
+  
+  body{
+  font-family: "Open Sans";
+  }
+  
+  .sidebar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(17, 24, 39,1);
+  overflow-x: hidden;
+  padding: 50px 20px;
+  color: gray;
+  border-right: 5px solid gray;
+  }
+  .sidebar a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #818181;
+  display: block;
+  padding: 20px;
+  }
+  
+  .sidebar a:hover {
+  color: #f1f1f1;
+  border-bottom: 3px solid rgba(236, 72, 153,1);
+  }
+  
+  .icon{
+  color: gray;
+  size: 2x;
+  }
+  
+  .icon:hover{
+  color: rgba(236, 72, 153,1);
+  }
+
+
+  main {
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  margin-left: 200px; /* Same as the width of the sidenav */
+  }
+  
+  
+  @media screen and (max-height: 450px) {
+  .sidebar a {font-size: 18px;}
+  .sidebar {padding-top: 15px;}
+  }
+  h1{
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2.25rem;
+   }
+  
+.caption{
+    border: 2px solid red;
+    height: 75px;
+    color:rgba(17, 24, 39,1);
+}
+
+/* Maybe this should style a div wrapping the form, not the form itself. a div's behavior might be easier to predict */
+form{
+    border: 2px solid green;
+    /* color: green; */
+    margin: 0 auto;
+    /* height: 250px; */
+    flex-direction: column;
+    align-items: baseline;
+}
+
+
+.post-container{
+    height: 350px;
+    border: 2px solid pink;
+
+}
+  .postImage {
+    width: 800px;
+    height: auto;
+  }
+
+
+.num-likes{
+    padding: 10px;
+}
+button{
+    margin-right: 75%;
+    box-shadow:0 2px 4px rgba(0, 0, 0, 0.3);
+}
+  button:hover{
+    outline: 5px solid rgba(236, 72, 153, 1);
+  }
+
+  .new-post{
+      border: 2px solid blue;
+      height: 300px;
+  }

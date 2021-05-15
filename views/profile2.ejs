@@ -2,24 +2,32 @@
 <html lang="en">
   <head>
 
-  <script src="https://kit.fontawesome.com/7cff8bdceb.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" />
-  <link rel="stylesheet" href="\css\post\post-style.css">
+  <!-- <script src="https://kit.fontawesome.com/7cff8bdceb.js" crossorigin="anonymous"></script> -->
+  <!-- <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+  <!-- <link rel="manifest" href="/site.webmanifest"> -->
 
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Post</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/addPost/style.css" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+  
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Add Post</title>
+  
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+
+  <!-- Public CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/addPost/style.css" />
+  <!-- <link rel="stylesheet" href="\css\post\post-style.css"> --> 
   </head>
   <body>
 
@@ -34,7 +42,7 @@
     </div>
 
     <h3>ADD A POST </h3>
-    <%= typeof msg != 'undefined' ? msg : '' %> <!-- an error message if an unsupported clip is uploaded -->
+    <div><%= typeof msg != 'undefined' ? msg : '' %></div> <!-- an error message if an unsupported clip is uploaded -->
     <form action="/post/addPost" enctype="multipart/form-data" method="POST">
       <div>
         <label for="content">Got a Pic?</label>
