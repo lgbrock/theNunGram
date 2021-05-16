@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
+    "dev": "nodemon server.js -e js,css,ejs",
     "build:css": "tailwindcss build src/styles.css -o public/css/styles.css"
   },
   "author": "F2T9",
