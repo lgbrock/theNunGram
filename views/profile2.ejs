@@ -41,7 +41,7 @@
     
     <p>Here are my posts:</p>
     <div class="posts">
-        <% for(post of post) {%>
+        <% for(post of posts) {%>
           <div class='post'>
             <span class='postCaption'><%= post.caption %></span>
           <% if(post.image === null) { %> 
@@ -52,8 +52,8 @@
             <a href="/post/<%= post._id%>">
             <img class="object-contain" src="<%= post.image %>" />
           </a>
-        </div>
           <% } %> 
+        </div>
               <% } %> 
             </div>  
     <!-- Nav Bar -->
