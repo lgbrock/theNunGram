@@ -1,70 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="author" content="name" />
+		<meta name="description" content="description here" />
+		<meta name="keywords" content="keywords,here" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="name" />
-  <meta name="description" content="description here" />
-  <meta name="keywords" content="keywords,here" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Document</title>
+		<title>Document</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-  
-  <!-- Tailwind CSS -->
-  <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet" />
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+			rel="stylesheet"
+		/>
 
-  <!-- Public CSS -->
-  <link rel="stylesheet" href="css/feed/style.css" />
+		<!-- Font Awesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+			integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+			crossorigin="anonymous"
+		/>
 
-</head>
+		<!-- Tailwind CSS -->
+		<link
+			href="https://unpkg.com/tailwindcss/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
 
-<body class="bg-gray-100 font-sans     leading-normal tracking-normal">
-  <div class="flex md:flex-row-reverse flex-wrap">
+		<!-- Public CSS -->
+		<link rel="stylesheet" href="css/feed/style.css" />
+	</head>
 
-    <!--Main Content-->
-    <div class="w-full md:w-5/6 bg-gray-100">
-      <div class="container bg-gray-100 pt-16 px-6">
-        <% for (post of posts) { %>
-          <div class="tm-content-div border-solid border-4 border-purple-600">
-            <!-- <span>Caption: </span> -->
-            <h1>
-              "<%= post.caption%>"
-            </h1>
-            <div class="border-solid border-4 border-gray-600 container md flex justify-center md">
-              <% if(post.image === null) { %> 
-                <div class="twitch-clip flex justify-center">
-                  <iframe  frameborder="0" src="<%= post.clip %>" height="400" width="300" allowfullscreen="true"></iframe>
-                </div>
-                <% } else{ %>
-                <a href="/post/<%= post._id%>">
-                <img class="object-contain" src="<%= post.image %>" />
-              </a>
-              <% } %> 
-            </div>
-            <div class="credentials">
-              <span>Author: <%= post.author %></span>
-              <span>Created At: <%= post.createdAt %></span>
-            </div>
-          </div>
-          <% } %>
-      </div>
-    </div>
-  </div>
+	<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+		<div class="flex md:flex-row-reverse flex-wrap">
+			<!--Main Content-->
+			<div class="w-full md:w-5/6 bg-gray-100">
+				<div class="container bg-gray-100 pt-16 px-6">
+					<% for (post of posts) { %>
+					<div class="tm-content-div border-solid border-4 border-purple-600">
+						<!-- <span>Caption: </span> -->
+						<h1>"<%= post.caption%>"</h1>
+						<div
+							class="
+								border-solid border-4 border-gray-600
+								container
+								md
+								flex
+								justify-center
+								md
+							"
+						>
+							<% if(post.image === null) { %>
+							<div class="twitch-clip flex justify-center">
+								<iframe
+									frameborder="0"
+									src="<%= post.clip %>"
+									height="400"
+									width="300"
+									allowfullscreen="true"
+								></iframe>
+							</div>
+							<% } else{ %>
+							<a href="/post/<%= post._id%>">
+								<img class="object-contain" src="<%= post.image %>" />
+							</a>
+							<% } %>
+						</div>
+						<div class="credentials">
+							<span>Author: <%= post.author %></span>
+							<span>Created At: <%= post.createdAt %></span>
+						</div>
+					</div>
+					<% } %>
+				</div>
+			</div>
+		</div>
 
-  <!--Sidebar-->
-  <%- include('partials/main-nav') %>
-  
-</body>
-
+		<!--Sidebar-->
+		<%- include('partials/main-nav') %>
+	</body>
 </html>
