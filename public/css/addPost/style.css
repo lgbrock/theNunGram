@@ -2,15 +2,65 @@ body {
   background-color: rgb(80, 122, 147);
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 300;  
+  overflow-x: hidden;
+}
+
+.viewport-wrap {
+  width: 90%;
+  margin: 0 auto;
+}
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow-x: hidden;
-  padding-left: 8%;
+  /* width: 100%; */
+  margin: 0 auto;
+  margin-bottom: 3rem;
 }
 
+.vanilla-flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.vanilla-flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.post-container {
+  margin: 0 auto;
+}
+@media (min-width: 765px) {
+
+  .wrapper {
+    width: calc(100% - 8.3333%);
+    margin-left: calc((100% - 8.3333%) * 0.15);
+    margin-right: calc((100% - 8.3333%) * 0.05);
+  }
+}
+@media (min-width: 1280px) {
+
+  .wrapper {
+    width: calc(100% - 16.6667%);
+    margin-left: calc((100% - 8.3333%) * 0.22);
+    margin-right: calc((100% - 8.3333%) * 0.05);
+    /* margin-left: 4.7rem; */
+  }
+}
+@media (min-width: 1535px) {
+
+  .wrapper {
+    width: calc(100% - 12rem);
+    margin-left: calc((100% - 8.3333%) * 0.15);
+    margin-right: calc((100% - 8.3333%) * 0.05);
+    /* margin-left: 4.7rem; */
+  }
+}
 .header {
   padding: 10px;
 }
@@ -26,8 +76,13 @@ body {
   font-weight: bold;
   font-size: 40px;
 }
-.profile-img {
+.img-wrap {
   width: 9rem;
+  margin-bottom: 2rem;
+}
+.profile-img {
+  width: 100%;
+  display: block;
 }
 img {
   /* width: 9rem; */
@@ -59,6 +114,7 @@ input[type='text'] {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin: 20px;
 }
 .post {
