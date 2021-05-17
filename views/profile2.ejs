@@ -40,45 +40,52 @@
     />
 
     <!-- Public CSS -->
-    <!-- <link rel="stylesheet" href="/css/styles.css"> -->
     <link rel="stylesheet" href="/css/addPost/style.css" />
+    <!-- <link rel="stylesheet" href="/css/styles.css"> -->
     <!-- <link rel="stylesheet" href="\css\post\post-style.css"> -->
   </head>
   <body>
-    <section>
-      <div class="header">
-        <section class="profile-pic">
-          <h2><%= user.firstName%>'s Profile</h2>
-          <img class="profile-img" src="<%= user.image%>" />
-        </section>
-      </div>
-
-      <p class="post-header">Here are my posts:</p>
-      <div class="posts">
-        <% for(post of posts) {%>
-        <div class="post">
-          <span class="postCaption"><%= post.caption %></span>
-          <% if(post.image === null) { %>
-          <div class="flex justify-center">
-            <iframe
-              class="twitch-clip"
-              frameborder="0"
-              src="<%= post.clip %>"
-              height="480"
-              width="720"
-              allowfullscreen="true"
-            ></iframe>
+    <div class="viewport-wrap">
+      <div class="vanilla-flex-row">
+        <section class='wrapper'>
+          <header class="header">
+            <section class="profile-pic">
+              <h2><%= user.firstName%>'s Profile</h2>
+              <div class="img-wrap">
+                <img class="profile-img" src="<%= user.image%>" />
+              </div>
+              <p class="post-header">Here are my posts:</p>
+            </section>
+          </header>
+          <div class="post-container">
+            <div class="posts">
+              <% for(post of posts) {%>
+              <div class="post">
+                <span class="postCaption"><%= post.caption %></span>
+                <% if(post.image === null) { %>
+                <div class="flex justify-center">
+                  <iframe
+                    class="twitch-clip"
+                    frameborder="0"
+                    src="<%= post.clip %>"
+                    height="480"
+                    width="720"
+                    allowfullscreen="true"
+                  ></iframe>
+                </div>
+                <% } else{ %>
+                <a href="/post/<%= post._id%>">
+                  <img class="object-contain" src="<%= post.image %>" />
+                </a>
+                <% } %>
+              </div>
+              <% } %>
+            </div>
           </div>
-          <% } else{ %>
-          <a href="/post/<%= post._id%>">
-            <img class="object-contain" src="<%= post.image %>" />
-          </a>
-          <% } %>
-        </div>
-        <% } %>
+        </section>
+        <!-- Nav Bar -->
+        <%- include('partials/main-nav') %>
       </div>
-    </section>
-    <!-- Nav Bar -->
-    <%- include('partials/main-nav') %>
+    </div>
   </body>
 </html>
