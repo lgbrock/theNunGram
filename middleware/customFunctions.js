@@ -35,7 +35,7 @@ function convertTwitchClip (...arguments) {
   const url = new URL(videoURL)
   let embeddableURL;
   if (url.hostname === 'clips.twitch.tv'){
-    // if it's an embed link in the following format: https://clips.twitch.tv/embed?clip=CleverDependablePoultryLitFam-_dTbDHINZ38jB7eg&parent=localhost:3000
+    // if it's an embed link in the following format: https://clips.twitch.tv/embed?clip=CleverDependablePoultryLitFam-_dTbDHINZ38jB7eg&parent=www.example.com
      // check if url.searchParams.get("clip") is null
     if (url.searchParams.get("clip") !== null) {
       embeddableURL = `${url.origin + url.pathname + '?clip=' + url.searchParams.get("clip") + parentSiteParams}`
