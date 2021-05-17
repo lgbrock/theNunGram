@@ -1,64 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-  <!-- <script src="https://kit.fontawesome.com/7cff8bdceb.js" crossorigin="anonymous"></script> -->
-  <!-- <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
+    <!-- <script src="https://kit.fontawesome.com/7cff8bdceb.js" crossorigin="anonymous"></script> -->
+    <!-- <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <!-- <link rel="manifest" href="/site.webmanifest"> -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <!-- <link rel="manifest" href="/site.webmanifest"> -->
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
-  
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Add Post</title>
-  
-  <!-- Fontawesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Public CSS -->
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="/css/addPost/style.css" />
-  <!-- <link rel="stylesheet" href="\css\post\post-style.css"> --> 
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Add Post</title>
+
+    <!-- Fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <!-- Tailwind CSS -->
+    <link
+      href="https://unpkg.com/tailwindcss/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Public CSS -->
+    <!-- <link rel="stylesheet" href="/css/styles.css"> -->
+    <link rel="stylesheet" href="/css/addPost/style.css" />
+    <!-- <link rel="stylesheet" href="\css\post\post-style.css"> -->
   </head>
   <body>
-    
-      <section>
-        <div class='header'>
-          <section class="profile-pic">
-            <h2><%= user.firstName%>'s Profile</h2>
-            <img class='profile-img' src='<%= user.image%>'>
-          </section>
+    <section>
+      <div class="header">
+        <section class="profile-pic">
+          <h2><%= user.firstName%>'s Profile</h2>
+          <img class="profile-img" src="<%= user.image%>" />
+        </section>
+      </div>
+
+      <p class="post-header">Here are my posts:</p>
+      <div class="posts">
+        <% for(post of posts) {%>
+        <div class="post">
+          <span class="postCaption"><%= post.caption %></span>
+          <% if(post.image === null) { %>
+          <div class="flex justify-center">
+            <iframe
+              class="twitch-clip"
+              frameborder="0"
+              src="<%= post.clip %>"
+              height="480"
+              width="720"
+              allowfullscreen="true"
+            ></iframe>
+          </div>
+          <% } else{ %>
+          <a href="/post/<%= post._id%>">
+            <img class="object-contain" src="<%= post.image %>" />
+          </a>
+          <% } %>
         </div>
-        
-        <p>Here are my posts:</p>
-        <div class="posts">
-            <% for(post of posts) {%>
-              <div class='post'>
-                <span class='postCaption'><%= post.caption %></span>
-              <% if(post.image === null) { %>
-                <div class="flex justify-center">
-                  <iframe class="twitch-clip" frameborder="0" src="<%= post.clip %>" height="480" width="720" allowfullscreen="true"></iframe>
-                </div>
-                <% } else{ %>
-                <a href="/post/<%= post._id%>">
-                <img class="object-contain" src="<%= post.image %>" />
-              </a>
-              <% } %>
-            </div>
-                  <% } %>
-                </div>
-      </section>     
-      <!-- Nav Bar -->
-      <%- include('partials/main-nav') %>
-    
+        <% } %>
+      </div>
+    </section>
+    <!-- Nav Bar -->
+    <%- include('partials/main-nav') %>
   </body>
 </html>
