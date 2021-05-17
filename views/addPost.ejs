@@ -24,9 +24,9 @@
 
   <body class="bg-gray-100 font-sans leading-normal tracking-normal">
     <div class="viewport-wrap">
-      <div class="flex flex-row justify-center items-center content-center my-8 mx-auto">
+      <div class="flex flex-row justify-center items-center content-center my-9 sm:my-14 mx-auto">
         <main class="content-wrapper ">
-          <h1 class="text-5xl font-bold mb-8">ADD A POST</h1>
+          <h1 class="text-5xl font-bold mb-8 uppercase">add a post</h1>
           <form
           action="/post/addPost"
           enctype="multipart/form-data"
@@ -34,17 +34,16 @@
           class="flex flex-col justify-between items-center"
           >          
             <div class="flex flex-col justify-around items-center">
-              <label for="caption">Give us a Caption</label>
-              <input type="text" name="caption" placeholder="CLEVER CAPTION" />
-              <label for="content">Got a Pic?</label>
-              <!-- <span> Only supports: .jpg, .png, jpeg,</span> -->
-              <div><%= typeof msg != 'undefined' ? msg : '' %></div>
+              <label class='font-medium' for="caption">Give us a Caption</label>
+              <input class='mb-8' type="text" name="caption" placeholder="CLEVER CAPTION" />
               <!-- an error message if an unsupported clip is uploaded -->
-              <span>Upload it here:</span>
-              <input class="file inline-block" type="file" name="file" />
+              <div><%= typeof msg != 'undefined' ? msg : '' %></div>
+              <label class='font-medium' for="content">Got a Pic? Upload it here:</label>
+              <input class="file inline-block mb-8" type="file" name="file" />
             </div>
-            <label for="clip">Got a Twitch Clip? Paste it here</label>
-            <input class='pb-5' type="text" name="clip" placeholder="TWITCH LINK" />            
+            <span class='mb-8 text-2xl uppercase font-semibold text-indigo-600'>or</span>
+            <label class="font-medium" for="clip">Got a Twitch Clip? Paste it here</label>
+            <input class='mb-8' type="text" name="clip" placeholder="TWITCH LINK" />            
             <button
               type="submit"
               class="                
