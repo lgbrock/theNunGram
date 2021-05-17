@@ -10,8 +10,13 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 
+    
+		<!-- Tailwind CSS -->
+		<link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet" />
+
     <!-- Public CSS -->
-    <link rel="stylesheet" href="/css/posts/style.css" />
+    <!-- <link rel="stylesheet" href="/css/posts/style.css" /> -->
+    <link rel="stylesheet" href="/css/addPost/style.css" />
   </head>
   <body>
     <!-- Renders a single Post -->
@@ -49,7 +54,7 @@
           </form>
           <% } %>
         </div>
-        <section class="column">
+        <!-- <section class="column">
           <section class="right">
               <ul class="nav">
                   <li><a href='/feed'>Feed</a></li>
@@ -57,7 +62,9 @@
                   <li><a href="/auth/logout">Logout</a></li>
               </ul>
           </section>
-      </section>
+      </section> -->
+        <!-- Nav Bar -->
+    <%- include('partials/main-nav') %>
         <!-- Iframe is causing page to break so nothing will show below it. Twitch allows you to directly src twitch clips SEE README -->
       <script type='text/javascript' src="js/main.js"></script>
   </body>
