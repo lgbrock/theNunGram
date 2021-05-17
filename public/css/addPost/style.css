@@ -1,156 +1,62 @@
 body {
-  background-color: rgb(80, 122, 147);
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  font-weight: 300;  
-  overflow-x: hidden;
+    /* background-color: rgb(80, 122, 147); */
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 300;  
+    overflow-x: hidden;
 }
-
 .viewport-wrap {
-  width: 90%;
-  margin: 0 auto;
+    width: 90%;
+    margin: 0 auto;
 }
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* width: 100%; */
-  margin: 0 auto;
-  margin-bottom: 3rem;
+.file{
+    width: 13em;
+    margin: 0 auto;
 }
-
-.vanilla-flex-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-.vanilla-flex-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.post-container {
-  margin: 0 auto;
-}
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* width: 80%; */
+    margin: 0 auto;
+    margin-bottom: 3rem;
+  }
 @media (min-width: 765px) {
 
-  .wrapper {
-    width: calc(100% - 8.3333%);
-    margin-left: calc((100% - 8.3333%) * 0.15);
-    margin-right: calc((100% - 8.3333%) * 0.05);
+    .content-wrapper {
+      width: calc(100% - 8.3333%);
+      margin-left: calc((100% - 8.3333%) * 0.15);
+      margin-right: calc((100% - 8.3333%) * 0.05);
+    }
   }
-}
-@media (min-width: 1280px) {
-
-  .wrapper {
-    width: calc(100% - 16.6667%);
-    margin-left: calc((100% - 8.3333%) * 0.22);
-    margin-right: calc((100% - 8.3333%) * 0.05);
-    /* margin-left: 4.7rem; */
+  @media (min-width: 1280px) {
+  
+    .content-wrapper {
+      width: calc(100% - 16.6667%);
+      margin-left: calc((100% - 8.3333%) * 0.22);
+      margin-right: calc((100% - 8.3333%) * 0.05);
+      /* margin-left: 4.7rem; */
+    }
   }
-}
-@media (min-width: 1535px) {
-
-  .wrapper {
-    width: calc(100% - 12rem);
-    margin-left: calc((100% - 8.3333%) * 0.15);
-    margin-right: calc((100% - 8.3333%) * 0.05);
-    /* margin-left: 4.7rem; */
+  @media (min-width: 1535px) {
+  
+    .content-wrapper {
+      width: calc(100% - 12rem);
+      margin-left: calc((100% - 8.3333%) * 0.15);
+      margin-right: calc((100% - 8.3333%) * 0.05);
+      /* margin-left: 4.7rem; */
+    }
   }
-}
 .header {
-  padding: 10px;
+    padding: 0.5rem;
 }
-
-.profile-pic {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 10px;
-}
-.profile-pic h2 {
-  font-weight: bold;
-  font-size: 40px;
-}
-.img-wrap {
-  width: 9rem;
-  margin-bottom: 2rem;
-}
-.profile-img {
-  width: 100%;
-  display: block;
-}
-img {
-  /* width: 9rem; */
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  /* margin: 1%; */
-}
-
-h2 {
-  font-size: 2rem;
-}
-.content,
-input {
-  padding: 10px;
-  margin: 10px 0;
-}
-input[type='text'] {
-  padding: 10px;
-  border: 2px solid white;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  width: 100%;
-}
-
-.post-header {
-  text-align: center;
-}
-.posts {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-}
-.post {
-  background-color: rgba(211, 211, 211, 0.55);
-  border: 2px solid white;
-  border-radius: 10px;
-  margin: 0.85%;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2% 4%;
-}
-.postCaption {
-  display: flex;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: bold;
-}
-.twitch-clip {
-  margin-top: 4%;
-  padding-bottom: 4%;
-}
-
-.likes-container {
-  display: flex;
-  justify-content: space-between;
-}
-.likes {
-  font-size: 30px;
-  font-weight: bold;
-}
-.submit {
-  width: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  h2 {
+    font-size: 2rem;
+  }
+  
+  input {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+  }
+ 

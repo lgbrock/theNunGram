@@ -15,64 +15,59 @@
       crossorigin="anonymous"
     />
 
-    <!-- Tailwind CSS -->
-    <link
-      href="https://unpkg.com/tailwindcss/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+    <!-- Tailwind CSS -->    
+    <link rel="stylesheet" href="/css/styles.css">
 
     <!-- Public CSS -->
     <link rel="stylesheet" href="/css/addPost/style.css" />
   </head>
 
   <body class="bg-gray-100 font-sans leading-normal tracking-normal">
-    <h1 class="text-7xl font-bold">ADD A POST</h1>
-    <div><%= typeof msg != 'undefined' ? msg : '' %></div>
-    <!-- an error message if an unsupported clip is uploaded -->
-    <form
-      action="/post/addPost"
-      enctype="multipart/form-data"
-      method="POST"
-      class="ml-20 flex flex-col content-center"
-    >
-      <div>
-        <label for="content">Got a Pic?</label>
-        <span> Only supports: .jpg, .png, jpeg,</span>
-        <input class="content" type="file" name="file" />
+    <div class="viewport-wrap">
+      <div class="flex flex-row justify-center items-center content-center my-8 mx-auto">
+        <main class="content-wrapper ">
+          <h1 class="text-5xl font-bold mb-8">ADD A POST</h1>
+          <form
+          action="/post/addPost"
+          enctype="multipart/form-data"
+          method="POST"
+          class="flex flex-col justify-between items-center"
+          >          
+            <div class="flex flex-col justify-around items-center">
+              <label for="caption">Give us a Caption</label>
+              <input type="text" name="caption" placeholder="CLEVER CAPTION" />
+              <label for="content">Got a Pic?</label>
+              <!-- <span> Only supports: .jpg, .png, jpeg,</span> -->
+              <div><%= typeof msg != 'undefined' ? msg : '' %></div>
+              <!-- an error message if an unsupported clip is uploaded -->
+              <span>Upload it here:</span>
+              <input class="file inline-block" type="file" name="file" />
+            </div>
+            <label for="clip">Got a Twitch Clip? Paste it here</label>
+            <input class='pb-5' type="text" name="clip" placeholder="TWITCH LINK" />            
+            <button
+              type="submit"
+              class="                
+                bg-gray-900
+                text-gray-300
+                px-9
+                py-4                
+                inline-block
+                text-center
+                shadow-2xl
+                rounded-xl
+                hover:bg-pink-500
+                focus:outline-none
+                focus:ring-3 focus:ring-green-800 focus:ring-opacity-50
+              "
+            >
+              Upload...BOOM!
+            </button>
+          </form>
+        </main>
+        <!--Sidebar-->
+        <%- include('partials/main-nav') %>
       </div>
-      <div>
-        <label for="caption">Give us a Caption</label>
-        <input type="text" name="caption" placeholder="CLEVER CAPTION" />
-      </div>
-      <div class="pb-5">
-        <label for="clip">Got a Twitch Clip? Paste it here</label>
-        <input type="text" name="clip" placeholder="TWITCH LINK" />
-      </div>
-      <button
-        type="submit"
-        class="
-          justify-center
-          w-2/4
-          mx-auto
-          h-auto
-          bg-gray-900
-          text-gray-300
-          p-1
-          relative
-          inline-block
-          text-center
-          shadow-2xl
-          rounded-xl
-          hover:bg-pink-500
-          focus:outline-none
-          focus:ring-3 focus:ring-green-800 focus:ring-opacity-50
-        "
-      >
-        Upload...BOOM!
-      </button>
-    </form>
-
-    <!--Sidebar-->
-    <%- include('partials/main-nav') %>
+    </div>
   </body>
 </html>
