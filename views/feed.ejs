@@ -1,87 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="author" content="name" />
-		<meta name="description" content="description here" />
-		<meta name="keywords" content="keywords,here" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<title>Document</title>
+    <title>Feed</title>
 
-		<!-- Fonts -->
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"
-		/>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-			rel="stylesheet"
-		/>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
 
-		<!-- Font Awesome -->
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-			integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-			crossorigin="anonymous"
-		/>
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="/css/styles.css" />
 
-		<!-- Tailwind CSS -->    
-		<link rel="stylesheet" href="/css/styles.css">
+    <!-- Public CSS -->
+    <!-- Reusing Profile Style Sheet -->
+    <link rel="stylesheet" href="/css/feed/style.css" />
+  </head>
 
-		<!-- Public CSS -->
-		<link rel="stylesheet" href="css/feed/style.css" />
-	</head>
-
-	<body class="bg-gray-100 font-sans leading-normal tracking-normal">
-		<div class="flex md:flex-row-reverse flex-wrap">
-			<!--Main Content-->
-			<div class="w-full md:w-5/6 bg-gray-100">
-				<div class="container bg-gray-100 pt-16 px-6">
-					<% for (post of posts) { %>
-					<div class="tm-content-div">
-						<!-- <span>Caption: </span> -->
-						<h1>"<%= post.caption%>"</h1>
-						<div
-							class="								
-								container
-								md
-								flex
-								justify-center
-								md
-							"
-						>
-							<% if(post.image === null) { %>
-							<div class="twitch-clip flex justify-center">
-								<iframe
-									frameborder="0"
-									src="<%= post.clip %>"
-									height="400"
-									width="300"
-									allowfullscreen="true"
-								></iframe>
-							</div>
-							<% } else{ %>
-							<a href="/post/<%= post._id%>">
-								<img class="object-contain" src="<%= post.image %>" />
-							</a>
-							<% } %>
-						</div>
-						<div class="credentials">
-							<span>Author: <%= post.author %></span>
-							<span>Created At: <%= post.createdAt %></span>
-						</div>
-					</div>
-					<% } %>
-				</div>
-			</div>
-		</div>
-
-		<!--Sidebar-->
-		<%- include('partials/main-nav') %>
-	</body>
+  <body>
+    <div class="viewport-wrap">
+      <div class="vanilla-flex-row">
+        <section class="wrapper">
+          <div class="post-container">
+            <% for (post of posts) { %>
+            <div class="post">
+              <span class="postCaption"><%= post.caption %></span>
+              <% if(post.image === null) { %>
+              <div class="flex justify-center">
+                <iframe
+                  class="twitch-clip"
+                  frameborder="0"
+                  src="<%= post.clip %>"
+                  height="480"
+                  width="720"
+                  allowfullscreen="true"
+                ></iframe>
+              </div>
+              <% } else{ %>
+              <a href="/post/<%= post._id%>">
+                <img class="object-contain" src="<%= post.image %>" />
+              </a>
+              <div class="credentials">
+                <span>Author: <%= post.author %></span>
+                <br />
+                <span>Created At: <%= post.createdAt %></span>
+              </div>
+              <% } %>
+            </div>
+            <% } %>
+          </div>
+        </section>
+        <!-- Nav Bar -->
+        <%- include('partials/main-nav') %>
+      </div>
+    </div>
+  </body>
 </html>
