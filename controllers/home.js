@@ -23,15 +23,16 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       //finds all posts
-      const posts = await Post.find();
+      const posts = await Post.find().sort({createdAt: "desc"}).lean();
       const user = await req.user;
 
-      const quoteCount = await Quote.find().then((data) => data.length);
-      const randomNum = Math.floor(Math.random() * quoteCount);
-      const quote = (await Quote.find().skip(randomNum).limit(1))[0];
+      //Code To be implented for quotes if said feature is to be added
+      // const quoteCount = await Quote.find().then((data) => data.length);
+      // const randomNum = Math.floor(Math.random() * quoteCount);
+      // const quote = (await Quote.find().skip(randomNum).limit(1))[0];
 
       //renders feed page, and pass in our templating reference
-      res.render("feed.ejs", { posts, user: user, quote: quote });
+      res.render("feed.ejs", { posts, user: user });
       console.log("feed got! Hope youre hungry");
     } catch (err) {
       console.log(err);
