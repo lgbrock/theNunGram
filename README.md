@@ -45,11 +45,6 @@ npm run test
 
 👤 **Team project**
 
-- Website: logangbrock.com
-- Twitter: [@lifeisagarden23](https://twitter.com/lifeisagarden23)
-- Github: [@lgbrock](https://github.com/lgbrock)
-- LinkedIn: [@logangbrock](https://linkedin.com/in/logangbrock)
-
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/lgbrock/theNunGram/issues). You can also take a look at the [contributing guide](https://github.com/lgbrock/theNunGram/blob/master/CONTRIBUTING.md).
