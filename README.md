@@ -1,48 +1,59 @@
-# theNunGram
+<h1 align="center">Welcome to thenungram 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <img src="https://img.shields.io/badge/node-%5E14.x-blue.svg" />
+  <a href="https://github.com/yobee333/theNunGram/graphs/commit-activity" target="_blank">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  </a>
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/github/license/lgbrock/thenungram" />
+  </a>
+  <a href="https://twitter.com/lifeisagarden23" target="_blank">
+    <img alt="Twitter: lifeisagarden23" src="https://img.shields.io/twitter/follow/lifeisagarden23.svg?style=social" />
+  </a>
+</p>
 
-Social Networking app
+> Social media app that was developed using MVC and MERN stack
 
-A Leon Centric social media network. Users can post, upvote/downvote, see their feed of of their favorite leon moments!
+### 🏠 [Homepage](https://github.com/lgbrock/theNunGram#readme)
 
-# Getting Started
+### ✨ [Demo](thenungram.herokuapp.com)
 
-- NPM INSTALL
-- Create .env file inside config and add following as key = value like shown in the example .env file found inside
-- Place MongoDB connection string value in .env with DB_URI as key name
+## Prerequisites
 
-  - PORT = 3000
-  - DB_STRING = your database URI
-  - CLOUD_NAME = your cloudinary cloud name
-  - API_KEY = your cloudinary api key
-  - API_SECRET = your cloudinary api secret
+- node ^14.x
 
-# Changes
+## Install
 
-New Route Structure
+```sh
+npm install
+```
 
-A) Home/Index
-a. Index - Landing Page
-b. Profile - Gets A users Profile
-c. Feed - A feed of ALL post
+## Usage
 
-B) Post
-a. :id - Gets a Post by it's ID
-b. addPost - creates a POST
-c. Random - gets a post by a random id
-c. Delete? - Do we need a delete path?
+```sh
+npm run start
+```
 
-C)Auth Routes
-a. /auth
-b. /auth/callback
-c. /logout
+## Run tests
 
-# TODO
+```sh
+npm run test
+```
 
-[]Client-Side
-[]Expand Back-End
-A. Add routes (PUT REQUESTS) To upvote/downvote imgages on singular posts.
-i. These would be PUT REQUEST.
-ii. May need 2, depending on front-end(like/dislike)
+## Author
 
-B. allow editing of user bio
-[] display on profile, and allow PUT req to edit text
+👤 **Team project**
+
+- Website: logangbrock.com
+- Twitter: [@lifeisagarden23](https://twitter.com/lifeisagarden23)
+- Github: [@lgbrock](https://github.com/lgbrock)
+- LinkedIn: [@logangbrock](https://linkedin.com/in/logangbrock)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/lgbrock/theNunGram/issues). You can also take a look at the [contributing guide](https://github.com/lgbrock/theNunGram/blob/master/CONTRIBUTING.md).
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
